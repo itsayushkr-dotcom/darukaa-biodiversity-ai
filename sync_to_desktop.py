@@ -19,8 +19,11 @@ def sync():
                 continue
             s_file = os.path.join(root, f)
             d_file = os.path.join(target_dir, f)
-            shutil.copy2(s_file, d_file)
-            count += 1
+            try:
+                shutil.copy2(s_file, d_file)
+                count += 1
+            except PermissionError:
+                pass
     print(f"Synced {count} clean files to {DST}")
 
 if __name__ == "__main__":
