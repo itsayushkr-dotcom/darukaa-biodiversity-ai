@@ -164,7 +164,10 @@ pip install -r requirements.txt
 python evaluation/benchmark_cases.py
 
 # 4. Launch Streamlit Environmental Scientist Dashboard
-streamlit run app.py
+python -m streamlit run app.py
+
+# 5. (Optional) Run FastAPI REST Service
+python -m uvicorn api.main:app --port 8000 --reload
 ```
 
 ---

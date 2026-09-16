@@ -102,9 +102,9 @@ def create_submission_document(output_path: str):
         "# 3. Run Automated Benchmark Suite (All 7 challenge criteria)\n"
         "python evaluation/benchmark_cases.py\n\n"
         "# 4. Launch Streamlit Environmental Scientist Dashboard\n"
-        "streamlit run app.py\n\n"
+        "python -m streamlit run app.py\n\n"
         "# 5. (Optional) Run FastAPI REST Service\n"
-        "uvicorn api.main:app --port 8000 --reload"
+        "python -m uvicorn api.main:app --port 8000 --reload"
     )
     doc.add_paragraph(setup_code)
 
