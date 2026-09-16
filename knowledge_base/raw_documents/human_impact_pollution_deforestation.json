@@ -1,0 +1,44 @@
+[
+  {
+    "id": "UNEP_POLLUTION_001",
+    "title": "Global Assessment of Soil Pollution: Remediation of Nitrate and Agrochemical Runoff",
+    "source": "United Nations Environment Programme (UNEP) & FAO Global Soil Partnership",
+    "publication_year": 2021,
+    "domain": "human_impact",
+    "environmental_variables": ["chemical_intensity", "nitrate_leaching", "groundwater_contamination", "aquatic_biodiversity", "riparian_buffer"],
+    "summary": "Excessive synthetic nitrogen and phosphorus fertilization triggers chronic topsoil acidification, soil microbial dysbiosis, and toxic nitrate leaching into subterranean aquifers. Vegetated multi-tier riparian buffer zones and bio-char filtration capture dissolved agrochemicals.",
+    "quantified_impact": {
+      "nitrate_runoff_interception_pct": "60-78% reduction in dissolved nitrogen leaching into local waterways",
+      "synthetic_fertilizer_dependency_reduction": "30-45% reduction without yield penalty through enhanced biological cycling",
+      "aquatic_macroinvertebrate_recovery": "+55-80% increase in Ephemeroptera, Plecoptera, and Trichoptera (EPT) index"
+    },
+    "scientific_mechanism": "Vegetated riparian filter strips combine dense herbaceous root mats with deep woody roots. Denitrifying anaerobic rhizospheric bacteria (Pseudomonas stutzeri) convert mobile nitrate (NO3-) into inert atmospheric N2 gas before reaching water tables. Subsurface biochar intercepts hydrophobic pesticide residues through high-surface-area sorption pores.",
+    "recommended_interventions": [
+      "Establish 10-15 meter multi-tier riparian buffer strips (native grasses + deep-rooted shrubs) along agricultural drainage channels",
+      "Incorporate granular biochar (3-5 t/ha) along drainage swales as a passive reactive barrier for agrochemical sorption",
+      "Adopt split-application nitrogen budgeting based on real-time leaf color charts or chlorophyll meters"
+    ],
+    "target_biomes": ["intensive_croplands", "irrigated_alluvial_tracts", "riparian_agricultural_interfaces"]
+  },
+  {
+    "id": "FAO_FOREST_002",
+    "title": "Mitigating Agricultural Deforestation Edge Effects and Habitat Permeability",
+    "source": "FAO Forestry Paper 186: The State of the World's Forests & IPBES",
+    "publication_year": 2022,
+    "domain": "human_impact",
+    "environmental_variables": ["deforestation_history", "forest_fringe_erosion", "canopy_cover", "wildlife_corridors", "microclimate_desiccation"],
+    "summary": "Clearing forested fringes for intensive crop expansion exposes interior forest patches to severe desiccating winds, microclimate drying, and invasive weed encroachment. Establishing graded agroforestry ecotones reverses edge deterioration.",
+    "quantified_impact": {
+      "edge_microclimate_stabilization": "60% reduction in vapor pressure deficit (VPD) penetration into forest core",
+      "native_canopy_connectivity": "40-65% increase in arboreal and understory wildlife passage",
+      "invasive_weed_suppression": "50-70% decrease in light-demanding invasive weed biomass (Lantana camara, Parthenium)"
+    },
+    "scientific_mechanism": "Graduated vegetation buffers (trees tapering to tall shrubs and perennial grasses) deflect turbulent drying winds upward, preserving humidity in forest margins and providing vertical structural complexity essential for forest-interior birds and small mammals.",
+    "recommended_interventions": [
+      "Establish a 20-meter graduated ecotone transition along forest borders with native indigenous timber and fruit trees",
+      "Prohibit fire and herbicide clearance within 50 meters of remnant native woodland fragments",
+      "Plant fast-growing pioneer nitrogen-fixers along boundary fences to accelerate microclimate closing"
+    ],
+    "target_biomes": ["forest_agricultural_interfaces", "tropical_margins", "degraded_woodlands"]
+  }
+]
