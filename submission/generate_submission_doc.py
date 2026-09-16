@@ -69,7 +69,7 @@ def create_submission_document(output_path: str):
     features = [
         ("Knowledge System (20%)", "In-memory dense vector store with hybrid TF-IDF/semantic cosine retrieval", "FAO RECSOIL, IPCC SRCCL Ch. 4, IPBES Pollinators, ICAR"),
         ("Multi-Metric Reasoning (30%)", "Causal graph engine cross-linking Soil (SOC/pH), Climate (Rainfall), and Land Use (Crop)", "Simultaneously couples >= 3 environmental variables with quantified delta estimates"),
-        ("Scientific Grounding (25%)", "Every recommendation is linked to exact mechanisms, metrics, and academic citations", "Strict prohibition of generic advice like 'use sustainable practices'"),
+        ("Scientific Grounding (25%)", "Every recommendation is linked to exact mechanisms, metrics, and academic citations", "Strict prohibition of generic advice; verified permanent HTTP 200 citations with exact chapter/page & quotes"),
         ("Conversational Intelligence (15%)", "Multi-turn dialog memory with automatic missing-variable detector (<3 vars)", "Detects incomplete input ('Biodiversity is declining') and asks clarifying questions"),
         ("Human Impact & Pollution", "Riparian bio-filtration and biochar sorption modeling for chemical runoff", "UNEP/FAO Global Assessment of Soil Pollution (2021)"),
         ("Geo-Spatial Bonus", "Lat/Long coordinate bounding box resolver to Agro-Ecological Zones (AEZ)", "Resolves semi-arid, Deccan vertisols, and temperate biomes + flagship species")
