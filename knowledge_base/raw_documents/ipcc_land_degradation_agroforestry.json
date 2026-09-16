@@ -1,0 +1,45 @@
+[
+  {
+    "id": "IPCC_SRCCL_001",
+    "title": "IPCC Special Report on Climate Change and Land (SRCCL): Agroforestry and Soil Carbon Dynamics",
+    "source": "Intergovernmental Panel on Climate Change (IPCC WGIII)",
+    "publication_year": 2019,
+    "domain": "land_degradation_agroforestry",
+    "environmental_variables": ["rainfall_variability", "soil_organic_carbon", "crop_monoculture", "habitat_fragmentation", "microclimate_buffering"],
+    "summary": "Agroforestry systems combining deep-rooted nitrogen-fixing woody perennials (Acacia tortilis, Faidherbia albida, Leucaena leucocephala) with seasonal cereal crops (wheat, pearl millet, sorghum) buffer microclimates and reverse desertification in semi-arid zones.",
+    "quantified_impact": {
+      "soil_organic_carbon_increase_pct": "20-35% within 3-5 years (0.8-1.5 t C/ha/year deep carbon storage)",
+      "ambient_canopy_cooling": "2.5°C to 4.2°C temperature attenuation under canopy",
+      "species_richness_increase_pct": "35-50% higher avian and beneficial arthropod richness",
+      "drought_resilience": "18-26% higher cereal yield stability during drought seasons"
+    },
+    "scientific_mechanism": "Deep-rooting woody trees hydraulically lift water from subterranean aquifers to dry upper soil horizons during nocturnal cycles (hydraulic redistribution), supporting adjacent cereal roots. Fallen leaf litter and pruned biomass deposit diverse polyphenolic organic compounds that feed soil saprophytic fungi, enhancing permanent glomalin-related soil protein (GRSP) synthesis.",
+    "recommended_interventions": [
+      "Implement alley cropping with Faidherbia albida (reverse phenology: drops leaves in monsoon/growing season, shedding nitrogen without shading crops)",
+      "Establish windbreaks and silvopastoral border hedges along field perimeters to reduce evapotranspiration by 22%",
+      "Integrate nitrogen-fixing shrub lines at 10-15 meter intervals in semi-arid monoculture fields"
+    ],
+    "target_biomes": ["semi-arid", "sub-tropical_dryland", "degraded_cropland", "arid_margin"]
+  },
+  {
+    "id": "IPCC_SRCCL_002",
+    "title": "Land Degradation Neutrality (LDN) and Ecosystem Connectivity Corridors",
+    "source": "IPCC & UNCCD Science-Policy Interface Report",
+    "publication_year": 2022,
+    "domain": "ecosystem_connectivity",
+    "environmental_variables": ["habitat_fragmentation", "edge_effects", "native_biodiversity", "landscape_permeability"],
+    "summary": "Fragmented monoculture landscapes isolate wildlife populations. Creating 5-8 meter wide native woody vegetated linear corridors reconnects isolated forest fragments and boosts biological pest control.",
+    "quantified_impact": {
+      "landscape_permeability_boost": "45-60% increase in small mammal and predatory insect gene flow",
+      "chemical_pesticide_need_reduction": "30-45% reduction due to natural predator re-establishment",
+      "soil_erosion_mitigation": "65% reduction in sheet water erosion"
+    },
+    "scientific_mechanism": "Vegetation corridors buffer pesticide drift, provide overwintering refugia for predatory carabid beetles and parasitoid wasps, and restore ecological stepping stones essential for meta-population persistence.",
+    "recommended_interventions": [
+      "Re-establish hedgerows composed of 4-6 native flowering shrub species along agricultural parcels",
+      "Retain riparian buffer strips of at least 15 meters along seasonal drainage streams",
+      "Avoid total clear-cutting of field boundaries"
+    ],
+    "target_biomes": ["all_agricultural_landscapes", "intensive_monoculture_regions"]
+  }
+]

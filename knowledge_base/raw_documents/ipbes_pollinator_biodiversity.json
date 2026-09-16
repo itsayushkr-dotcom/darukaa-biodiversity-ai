@@ -1,0 +1,44 @@
+[
+  {
+    "id": "IPBES_BIO_001",
+    "title": "IPBES Assessment on Pollinators, Pollination and Food Production",
+    "source": "Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services (IPBES)",
+    "publication_year": 2018,
+    "domain": "pollinator_diversity",
+    "environmental_variables": ["pollinator_abundance", "floral_richness", "pesticide_load", "wild_bee_nesting"],
+    "summary": "Monocultures trigger severe nutritional stress in wild pollinators (Apis dorsata, Megachile, Bombus) through brief single-species blooming pulses followed by green deserts. Floral strip diversification restores continuous nectar-pollen pathways.",
+    "quantified_impact": {
+      "wild_pollinator_visitation_increase": "+60-110% increase in native solitary bee and hoverfly densities",
+      "crop_fruit_set_and_yield_stability": "+14-24% improvement in seed set and fruit quality in entomophilous crops",
+      "parasitoid_predation_rate": "+45% higher parasitism of lepidopteran agricultural pests"
+    },
+    "scientific_mechanism": "Wild pollinators require continuous sequential floral resources across seasons and undisturbed underground or pithy stem nesting substrates. Polyculture and perennial wildflower borders provide uninterrupted carbohydrate (nectar) and lipid/protein (pollen) rations, halting immune collapse driven by sub-lethal neonicotinoid exposure.",
+    "recommended_interventions": [
+      "Dedicate 5-8% of arable field margins to non-harvested native perennial flowering blends with staggered flowering phenologies (Fabaceae, Asteraceae, Lamiaceae)",
+      "Maintain undisturbed earthen banks and leave beetle banks (raised 0.4m uncultivated strips) to furnish overwintering refugia",
+      "Enforce twilight/night-only biological spray regimens to protect diurnal foraging flights"
+    ],
+    "target_biomes": ["croplands", "orchards", "semi-arid_farming_systems", "temperate_grasslands"]
+  },
+  {
+    "id": "IPBES_BIO_002",
+    "title": "Microbiome Soil-Plant Symbiosis & Belowground Trophic Diversity",
+    "source": "Nature Ecology & Evolution / FAO Science Review",
+    "publication_year": 2021,
+    "domain": "soil_biodiversity",
+    "environmental_variables": ["mycorrhizal_colonization", "fungal_to_bacterial_ratio", "suppressive_soil", "nematode_diversity"],
+    "summary": "Industrial agro-chemical inputs suppress Arbuscular Mycorrhizal Fungi (AMF) and tip soil into bacterial-dominated, disease-prone regimes. Organic amendments and fungal inoculants restore soil food web balance.",
+    "quantified_impact": {
+      "fungal_to_bacterial_ratio": "Shift from 0.15:1 (diseased) to 0.75-1.2:1 (resilient healthy soil)",
+      "phosphorus_use_efficiency": "+30-55% increased biological uptake without synthetic phosphorus fertilizers",
+      "root_rot_pathogen_suppression": "40-60% suppression of Fusarium and Rhizoctonia infection"
+    },
+    "scientific_mechanism": "AMF extra-radical hyphae extend millimeters beyond root depletion zones, solubilizing occluded orthophosphate and zinc via organic acid secretion. Hyphae produce sticky glomalin glycoproteins that bind soil colloids and create air pockets.",
+    "recommended_interventions": [
+      "Inoculate seed batches with consortium AMF (Rhizophagus irregularis, Glomus mosseae)",
+      "Incorporate biochar (pyrolyzed crop residue) charged with vermicompost tea to furnish micro-porous fungal hotels",
+      "Eliminate prophylactic synthetic fungicide drenches"
+    ],
+    "target_biomes": ["all_soil_orders", "degraded_mineral_soils", "saline_affected_lands"]
+  }
+]

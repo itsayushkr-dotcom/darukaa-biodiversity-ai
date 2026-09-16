@@ -1,0 +1,44 @@
+[
+  {
+    "id": "FAO_SOC_001",
+    "title": "Recarbonization of Global Soils (RECSOIL) - Legume Cover Cropping Framework",
+    "source": "Food and Agriculture Organization of the United Nations (FAO)",
+    "publication_year": 2020,
+    "domain": "soil_health",
+    "environmental_variables": ["soil_organic_carbon", "microbial_biomass", "nitrogen_fixation", "soil_moisture"],
+    "summary": "Introduction of multi-species legume-based cover crops (e.g., Vicia villosa, Trifolium repens, Crotalaria juncea) in depleted croplands (SOC < 0.5%). Root exudates stimulate mycorrhizal fungi and increase aggregate stability.",
+    "quantified_impact": {
+      "soil_organic_carbon_increase_pct": "15-25% over 2-3 years (0.2-0.5 t C/ha/year sequestration rate)",
+      "microbial_diversity_improvement_pct": "28-40% increase in microbial biomass carbon (MBC)",
+      "water_infiltration_gain_pct": "20-35% reduction in surface runoff"
+    },
+    "scientific_mechanism": "Legumes synthesize atmospheric N2 into bioavailable ammonium via rhizobial symbiosis. The resulting low C:N ratio biomass decomposes into microbial residues (necromass), which chemically bond with mineral silt and clay fractions to form stable micro-aggregates, permanently locking organic carbon in the soil profile.",
+    "recommended_interventions": [
+      "Plant multi-species legume cover crops during fallow or inter-row cycles",
+      "Terminate mechanically through roller-crimping rather than glyphosate to preserve fungal hyphae",
+      "Maintain minimum 30% surface residue cover year-round"
+    ],
+    "target_biomes": ["semi-arid", "sub-humid", "temperate", "dryland_cropland"]
+  },
+  {
+    "id": "FAO_SOC_002",
+    "title": "Conservation Agriculture: Minimum Soil Disturbance and Biological Soil Tillage",
+    "source": "FAO Global Soil Partnership & ICAR Technical Bulletin",
+    "publication_year": 2021,
+    "domain": "soil_health",
+    "environmental_variables": ["soil_disturbance", "bulk_density", "earthworm_richness", "carbon_retention"],
+    "summary": "Zero-tillage combined with organic retention curtails oxidation of humus and disruption of earthworm (Lumbricidae) burrows in intensive grain systems.",
+    "quantified_impact": {
+      "soil_organic_carbon_increase_pct": "10-18% over 3-5 years",
+      "earthworm_population_density": "+80-150% increase in macropore bio-channels",
+      "fuel_and_emissions_reduction": "30-40% drop in on-farm tractor diesel consumption"
+    },
+    "scientific_mechanism": "Inverting soil through deep disc ploughing exposes internal aggregates to UV radiation and rapid microbial oxidation, volatilizing carbon as CO2. Direct drilling preserves mycorrhizal networks and promotes earthworm endogeic populations.",
+    "recommended_interventions": [
+      "Transition from deep inversion tillage to direct no-till seeders",
+      "Retain at least 2.5 tonnes/ha of crop residue on topsoil",
+      "Introduce brassica deep-root bio-drills (Daikon radish) to alleviate subsoil compaction without steel"
+    ],
+    "target_biomes": ["semi-arid", "arid_irrigated", "intensively_tilled_grain_belt"]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "SOIL_PHYS_001",
+    "title": "Restoration of Alkaline and Sodic Soils via Gypsum and Halophyte Phytoremediation",
+    "source": "ICAR-Central Soil Salinity Research Institute & FAO Land and Water Division",
+    "publication_year": 2021,
+    "domain": "soil_chemistry",
+    "environmental_variables": ["soil_ph", "exchangeable_sodium_pct", "electrical_conductivity", "hydraulic_conductivity"],
+    "summary": "High soil pH (> 8.5) and high Exchangeable Sodium Percentage (ESP > 15%) disperse clay platelets, sealing soil pores and suffocating root systems. Gypsum and organic leaching restore ionic equilibrium.",
+    "quantified_impact": {
+      "soil_ph_neutralization": "Reduction from pH 8.8-9.2 down to 7.6-8.0 over 18-24 months",
+      "hydraulic_conductivity_recovery": "3.5x to 5x increase in water downward percolation rate",
+      "crop_emergence_rate": "+35-50% improvement in seedling stand density"
+    },
+    "scientific_mechanism": "Calcium ions (Ca2+) from gypsum (CaSO4·2H2O) displace toxic monovalent sodium (Na+) bound to clay surfaces via cation exchange. The displaced Na+ forms soluble Na2SO4 and leaches below root zones during flooding or rainfall events. Flocculated Ca-clays restore crumb structure and macroporosity.",
+    "recommended_interventions": [
+      "Calculate gypsum requirement based on ESP test (apply 3-6 t/ha finely powdered agricultural gypsum)",
+      "Establish deep green-manuring with Sesbania aculeata (Dhaincha) prior to main crop cycle",
+      "Incorporate composted pressmud or acidified organic matter to generate carbonic acid"
+    ],
+    "target_biomes": ["arid_plains", "irrigated_alluvial_tracts", "sodic_wastelands"]
+  },
+  {
+    "id": "SOIL_PHYS_002",
+    "title": "On-Farm In-Situ Water Harvesting: Keyline Design and Contour Swales",
+    "source": "World Overview of Conservation Approaches and Technologies (WOCAT) / FAO",
+    "publication_year": 2020,
+    "domain": "water_availability",
+    "environmental_variables": ["annual_rainfall", "surface_runoff", "soil_moisture_depletion", "groundwater_recharge"],
+    "summary": "In low rainfall or semi-arid zones (< 600 mm/year), erratic intense downpours wash away topsoil. Earth contour bunds, swales, and Vetiver grass (Chrysopogon zizanioides) hedgerows intercept and infiltrate 80% of rainfall.",
+    "quantified_impact": {
+      "soil_moisture_retention_duration": "+35-55 days prolonged root-zone moisture availability into dry season",
+      "topsoil_loss_prevention": "75-90% reduction in sediment transport per hectare",
+      "shallow_aquifer_recharge": "+22-38% rise in local water table levels over 3 hydrological cycles"
+    },
+    "scientific_mechanism": "Contour swales convert kinetic energy of overland sheet flow into potential energy, slowing down velocity (Manning's equation). Still water infiltrates horizontally beneath the trench ridge, forming a subterranean moisture plume (hydration lens) accessible to deep-rooted crops and companion trees.",
+    "recommended_interventions": [
+      "Excavate level contour swales spaced at 15-20 meter intervals along land slope",
+      "Plant dense barrier hedges of Vetiver grass with deep spongy roots (3m depth) along swale berms",
+      "Mulch swale mounds with dry straw or chipped pruning biomass (10 cm layer) to block capillary evaporation"
+    ],
+    "target_biomes": ["semi-arid", "hilly_slopes", "rainfed_drylands", "degraded_rangelands"]
+  }
+]

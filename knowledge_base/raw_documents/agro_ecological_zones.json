@@ -1,0 +1,46 @@
+[
+  {
+    "zone_id": "AEZ_SEMI_ARID",
+    "name": "Semi-Arid Dryland Agro-Ecosystem",
+    "typical_regions": ["Northwestern India (Rajasthan, Gujarat, Haryana)", "Sahel Belt", "Mediterranean Basin", "Southern California / Northern Mexico", "Australian Savanna"],
+    "bounding_box_sample": {"lat_min": 20.0, "lat_max": 32.0, "lon_min": 68.0, "lon_max": 78.0},
+    "rainfall_range_mm": [300, 650],
+    "mean_temp_celsius": [24, 38],
+    "predominant_soils": ["Aridisols", "Sandy Loam", "Calcareous soils with low SOC (< 0.5%)"],
+    "primary_degradation_risks": ["Wind erosion", "Severe soil organic matter depletion", "Salinization under irrigation", "Prolonged dry season moisture deficit"],
+    "flagship_restoration_species": ["Faidherbia albida", "Prosopis cineraria (Khejri)", "Acacia nilotica", "Cenchrus ciliaris (Dhaman grass)", "Sesbania bispinosa"]
+  },
+  {
+    "zone_id": "AEZ_DECCAN_TROPICAL",
+    "name": "Tropical Dry Deciduous & Black Cotton Soil Zone",
+    "typical_regions": ["Central & Southern Indian Plateau (Maharashtra, Karnataka, Telangana)", "East African Plateau", "Brazilian Cerrado Margins"],
+    "bounding_box_sample": {"lat_min": 11.0, "lat_max": 21.0, "lon_min": 73.0, "lon_max": 81.0},
+    "rainfall_range_mm": [600, 950],
+    "mean_temp_celsius": [22, 34],
+    "predominant_soils": ["Vertisols (Deep black soils)", "Alfisol-Vertisol transition", "Heavy clay with high swell-shrink"],
+    "primary_degradation_risks": ["Cracking and high water erosion during peak monsoons", "Subsoil compaction", "Pest monoculture traps (Bt Cotton, Sugarcane)"],
+    "flagship_restoration_species": ["Azadirachta indica (Neem)", "Pongamia pinnata (Karanja)", "Crotalaria juncea (Sunnhemp)", "Vetiveria zizanioides"]
+  },
+  {
+    "zone_id": "AEZ_HUMID_SUBTROPICAL",
+    "name": "Humid Subtropical & Alluvial Plain",
+    "typical_regions": ["Indo-Gangetic Basin (Punjab, UP, Bihar, Bengal)", "Southeastern US", "Yangtze River Basin"],
+    "bounding_box_sample": {"lat_min": 24.0, "lat_max": 32.0, "lon_min": 74.0, "lon_max": 88.0},
+    "rainfall_range_mm": [800, 1600],
+    "mean_temp_celsius": [18, 32],
+    "predominant_soils": ["Entisols/Inceptisols (Deep fertile alluvium)", "Paddy-wheat degraded soils with hardpan"],
+    "primary_degradation_risks": ["Severe chemical pesticide residue", "Groundwater table over-extraction", "Stubble burning", "Loss of pollinator hedgerows"],
+    "flagship_restoration_species": ["Dalbergia sissoo (Shisham)", "Syzygium cumini (Jamun)", "Vigna radiata (Mung bean cover)", "Trifolium alexandrinum (Berseem)"]
+  },
+  {
+    "zone_id": "AEZ_GLOBAL_TEMPERATE",
+    "name": "Temperate Grain & Grassland Belt",
+    "typical_regions": ["US Midwest", "European Plain", "Pampas of Argentina", "Steppes of Ukraine/Kazakhstan"],
+    "bounding_box_sample": {"lat_min": 35.0, "lat_max": 55.0, "lon_min": -105.0, "lon_max": 35.0},
+    "rainfall_range_mm": [500, 900],
+    "mean_temp_celsius": [8, 22],
+    "predominant_soils": ["Mollisols", "Prairie soils", "Chernozem"],
+    "primary_degradation_risks": ["Nutrient runoff (nitrates/phosphorus into waterways)", "Loss of wild hedgerows", "Continuous corn-soy monoculture"],
+    "flagship_restoration_species": ["Quercus robur", "Trifolium pratense", "Helianthus maximiliani", "Bromus inermis"]
+  }
+]
