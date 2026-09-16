@@ -57,7 +57,7 @@ st.markdown("""
     .citation-badge {
         background-color: rgba(56, 189, 248, 0.22) !important;
         color: #38bdf8 !important;
-        border: 1px solid rgba(56, 189, 248, 0.45);
+        border: 1px solid rgba(56, 189, 248, 0.45) !important;
         font-size: 0.85rem;
         font-weight: 500;
         padding: 4px 10px;
@@ -65,6 +65,16 @@ st.markdown("""
         display: inline-block;
         margin-top: 4px;
         margin-right: 6px;
+        text-decoration: none !important;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+    .citation-badge:hover {
+        background-color: rgba(56, 189, 248, 0.45) !important;
+        color: #ffffff !important;
+        border-color: #38bdf8 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
     }
     .metric-badge {
         background-color: rgba(52, 211, 153, 0.22) !important;
@@ -224,9 +234,12 @@ with tab_chat:
                                 with col_m2:
                                     st.markdown(f"**Confidence Level:** <span class='confidence-badge-high'>{it.confidence_score * 100:.0f}% High Evidence</span>", unsafe_allow_html=True)
                                     st.markdown(f"**Time Horizon:** {it.time_horizon_summary}")
-                                    st.markdown("**Evidence Citations:**")
+                                    st.markdown("**Evidence Citations (Clickable ↗):**")
+                                    citations_html = ""
                                     for c in it.scientific_citations:
-                                        st.markdown(f"<span class='citation-badge'>📖 {c.source} ({c.year})</span>", unsafe_allow_html=True)
+                                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                                        citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='Read official study / report'>📖 {c.source} ({c.year}) ↗</a> "
+                                    st.markdown(citations_html, unsafe_allow_html=True)
                                 st.divider()
 
                         st.download_button(
@@ -326,7 +339,21 @@ with tab_structured:
                 st.write(f"**Action:** {it.what_to_do}")
                 st.write(f"**Mechanism:** {it.why_it_works}")
                 st.write(f"**Coupled Dimensions:** {', '.join(it.environmental_variables_coupled)}")
-                st.write(f"**Confidence:** `{it.confidence_score * 100:.0f}%` | **Time Horizon:** {it.time_horizon_summary}")
+
+                col_m1, col_m2 = st.columns(2)
+                with col_m1:
+                    st.markdown("**Quantified Projected Impacts:**")
+                    for imp in it.impacted_metrics:
+                        st.markdown(f"- <span class='metric-badge'>{imp.metric_name}:</span> **{imp.projected_improvement}** *({imp.time_horizon})*", unsafe_allow_html=True)
+                with col_m2:
+                    st.markdown(f"**Confidence Level:** <span class='confidence-badge-high'>{it.confidence_score * 100:.0f}% High Evidence</span>", unsafe_allow_html=True)
+                    st.markdown(f"**Time Horizon:** {it.time_horizon_summary}")
+                    st.markdown("**Evidence Citations (Clickable ↗):**")
+                    citations_html = ""
+                    for c in it.scientific_citations:
+                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                        citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='Read official study / report'>📖 {c.source} ({c.year}) ↗</a> "
+                    st.markdown(citations_html, unsafe_allow_html=True)
                 st.divider()
 
 
@@ -383,3 +410,5 @@ with tab_kb:
                 st.markdown("**Recommended Interventions:**")
                 for rec in m['recommended_interventions']:
                     st.markdown(f"• {rec}")
+                m_url = m.get("url", "https://www.fao.org/global-soil-partnership/en/")
+                st.markdown(f"<div style='margin-top: 14px;'><a href='{m_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' style='font-size:0.88rem; padding:6px 14px;'>🔗 Read Official Study / Report ({m['source']}) ↗</a></div>", unsafe_allow_html=True)

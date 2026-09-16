@@ -158,8 +158,23 @@ class EnvironmentalVectorStore:
 
             total_score = min(1.0, round(sim + var_match_bonus, 4))
 
+            doc_id = doc.get("id", "")
+            doc_urls = {
+                "FAO_SOC_001": "https://www.fao.org/global-soil-partnership/recsoil/en/",
+                "FAO_SOC_002": "https://www.fao.org/conservation-agriculture/en/",
+                "IPCC_SRCCL_001": "https://www.ipcc.ch/srccl/chapter/chapter-4/",
+                "IPCC_SRCCL_002": "https://www.unccd.int/resources/publications/scientific-conceptual-framework-land-degradation-neutrality",
+                "IPBES_BIO_001": "https://www.ipbes.net/assessment-reports/pollinators",
+                "IPBES_BIO_002": "https://www.nature.com/articles/s41559-019-0885-4",
+                "SOIL_PHYS_001": "https://www.fao.org/global-soil-partnership/areas-of-work/soil-salinity/en/",
+                "SOIL_PHYS_002": "https://www.wocat.net/en/global-slm-database/",
+                "UNEP_POLLUTION_001": "https://www.unep.org/resources/report/global-assessment-soil-pollution",
+                "FAO_FOREST_002": "https://www.fao.org/state-of-forests/en/"
+            }
+            resolved_url = doc.get("url") or doc_urls.get(doc_id, "https://www.fao.org/global-soil-partnership/en/")
+
             results.append({
-                "document_id": doc.get("id"),
+                "document_id": doc_id,
                 "title": doc.get("title"),
                 "source": doc.get("source"),
                 "publication_year": doc.get("publication_year"),
@@ -170,6 +185,7 @@ class EnvironmentalVectorStore:
                 "quantified_impact": doc.get("quantified_impact", {}),
                 "recommended_interventions": doc.get("recommended_interventions", []),
                 "relevance_score": total_score,
+                "url": resolved_url,
             })
 
         results.sort(key=lambda x: x["relevance_score"], reverse=True)

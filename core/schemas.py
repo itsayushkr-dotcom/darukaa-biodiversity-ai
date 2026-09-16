@@ -68,6 +68,7 @@ class ScientificCitation(BaseModel):
     title: str
     year: int
     document_id: Optional[str] = None
+    url: Optional[str] = Field(None, description="Official publication URL or DOI link")
 
 
 class EnvironmentalIntervention(BaseModel):

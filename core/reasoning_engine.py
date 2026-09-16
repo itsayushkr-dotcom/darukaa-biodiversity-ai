@@ -124,13 +124,15 @@ class MultiMetricReasoningEngine:
                     source="Intergovernmental Panel on Climate Change (IPCC)",
                     title="Special Report on Climate Change and Land (SRCCL), Chapter 4: Land Degradation & Agroforestry",
                     year=2019,
-                    document_id="IPCC_SRCCL_001"
+                    document_id="IPCC_SRCCL_001",
+                    url="https://www.ipcc.ch/srccl/chapter/chapter-4/"
                 ),
                 ScientificCitation(
                     source="Food and Agriculture Organization (FAO)",
                     title="Agroforestry and Landscape Restoration Technical Guidelines",
                     year=2020,
-                    document_id="FAO_SOC_001"
+                    document_id="FAO_SOC_001",
+                    url="https://www.fao.org/global-soil-partnership/recsoil/en/"
                 )
             ],
             time_horizon_summary="Initial microclimate cooling within 6 months; measurable soil carbon and species richness gains within 24-36 months.",
@@ -178,13 +180,15 @@ class MultiMetricReasoningEngine:
                     source="Food and Agriculture Organization of the United Nations (FAO)",
                     title="Recarbonization of Global Soils (RECSOIL): A Framework for Action",
                     year=2020,
-                    document_id="FAO_SOC_001"
+                    document_id="FAO_SOC_001",
+                    url="https://www.fao.org/global-soil-partnership/recsoil/en/"
                 ),
                 ScientificCitation(
                     source="Nature Ecology & Evolution",
                     title="Soil fungal:bacterial ratios and their relationship with soil carbon sequestration",
                     year=2021,
-                    document_id="IPBES_BIO_002"
+                    document_id="IPBES_BIO_002",
+                    url="https://www.nature.com/articles/s41559-019-0885-4"
                 )
             ],
             time_horizon_summary="Surface moisture retention begins immediately; soil carbon and microbial surge within 18-24 months.",
@@ -232,13 +236,15 @@ class MultiMetricReasoningEngine:
                     source="Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services (IPBES)",
                     title="Thematic Assessment Report on Pollinators, Pollination and Food Production",
                     year=2018,
-                    document_id="IPBES_BIO_001"
+                    document_id="IPBES_BIO_001",
+                    url="https://www.ipbes.net/assessment-reports/pollinators"
                 ),
                 ScientificCitation(
                     source="UNCCD Science-Policy Interface",
                     title="Land Degradation Neutrality and Ecological Connectivity Guidelines",
                     year=2022,
-                    document_id="IPCC_SRCCL_002"
+                    document_id="IPCC_SRCCL_002",
+                    url="https://www.unccd.int/resources/publications/scientific-conceptual-framework-land-degradation-neutrality"
                 )
             ],
             time_horizon_summary="Pollinator visits increase within weeks of flowering; biological pest balance stabilizes in 1-2 seasons.",
@@ -289,13 +295,15 @@ class MultiMetricReasoningEngine:
                         source="United Nations Environment Programme (UNEP) & FAO Global Soil Partnership",
                         title="Global Assessment of Soil Pollution: Remediation of Nitrate and Agrochemical Runoff",
                         year=2021,
-                        document_id="UNEP_POLLUTION_001"
+                        document_id="UNEP_POLLUTION_001",
+                        url="https://www.unep.org/resources/report/global-assessment-soil-pollution"
                     ),
                     ScientificCitation(
                         source="FAO Forestry & IPBES",
                         title="The State of the World's Forests: Mitigating Agricultural Edge Effects",
                         year=2022,
-                        document_id="FAO_FOREST_002"
+                        document_id="FAO_FOREST_002",
+                        url="https://www.fao.org/state-of-forests/en/"
                     )
                 ],
                 time_horizon_summary="Nitrate interception begins upon root establishment (3-6 mo); macroinvertebrate colonization within 12-18 mo.",
