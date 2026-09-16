@@ -117,6 +117,9 @@ with st.sidebar:
     if st.button("🏜️ Example 3: Sodic Alkaline Soil"):
         st.session_state.quick_query = "Soil pH: 8.9, ESP: 18%, Region: arid irrigated, Crop: monoculture cotton"
 
+    if st.button("🌊 Example 4: Agrochemical Pollution"):
+        st.session_state.quick_query = "Soil organic carbon: 0.4%, Rainfall: low, Crop: monoculture cotton, High chemical pesticide and fertilizer runoff"
+
     st.markdown("---")
     if st.button("🔄 Reset Conversation Memory"):
         st.session_state.agent.reset_memory()
@@ -192,6 +195,14 @@ with tab_chat:
                                     for c in it.scientific_citations:
                                         st.markdown(f"<span class='citation-badge'>📖 {c.source} ({c.year})</span>", unsafe_allow_html=True)
                                 st.divider()
+
+                        st.download_button(
+                            label="📥 Download Structured Ecological Diagnosis (JSON)",
+                            data=json.dumps(resp.model_dump(), indent=2),
+                            file_name="darukaa_biodiversity_diagnosis.json",
+                            mime="application/json",
+                            key=f"dl_{len(st.session_state.chat_history)}"
+                        )
                 else:
                     st.write(msg["content"])
 
@@ -307,7 +318,7 @@ with tab_visualizer:
 
     st.bar_chart(chart_data.set_index("Ecological Metric"), height=380)
 
-    st.markdown("""
+    st.markdown(r"""
     > [!NOTE]
     > **Mathematical Basis**:
     > - Soil Organic Carbon follows the **FAO RECSOIL sequestration model** ($0.2\text{--}0.5\text{ t C/ha/yr}$ under legume cover cropping).
