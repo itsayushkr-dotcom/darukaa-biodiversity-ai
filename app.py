@@ -184,7 +184,7 @@ with tab_chat:
     st.caption("Ask free-form questions. If variables are missing (< 3 environmental dimensions), the scientist will ask clarifying questions.")
 
     # Display chat history
-    for msg in st.session_state.chat_history:
+    for msg_idx, msg in enumerate(st.session_state.chat_history):
         with st.chat_message(msg["role"]):
             if msg["role"] == "user":
                 st.write(msg["content"])
@@ -232,9 +232,9 @@ with tab_chat:
                         st.download_button(
                             label="📥 Download Structured Ecological Diagnosis (JSON)",
                             data=json.dumps(resp.model_dump(), indent=2),
-                            file_name="darukaa_biodiversity_diagnosis.json",
+                            file_name=f"darukaa_diagnosis_turn_{msg_idx + 1}.json",
                             mime="application/json",
-                            key=f"dl_{len(st.session_state.chat_history)}"
+                            key=f"dl_btn_turn_{msg_idx}"
                         )
                 else:
                     st.write(msg["content"])
