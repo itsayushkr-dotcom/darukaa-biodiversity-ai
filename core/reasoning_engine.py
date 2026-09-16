@@ -246,6 +246,63 @@ class MultiMetricReasoningEngine:
         )
         interventions.append(int3)
 
+        # Intervention 4: Multi-Tier Riparian Bio-Filter & Biochar Sorption Swales (Human Impact & Pollution Pillar)
+        chem = params.get("chemical_intensity")
+        deforest = params.get("deforestation_history")
+        if chem or deforest or "pollution" in str(params).lower():
+            int4 = EnvironmentalIntervention(
+                title="Multi-Tier Vegetated Riparian Buffers & Biochar Sorption Swales",
+                what_to_do=(
+                    "Establish a 12-15 meter multi-tier vegetative filtration buffer along field drainage waterways "
+                    "(deep-rooted native shrubs + dense riparian grasses) integrated with subsurface granular biochar filtration trenches (3–5 t/ha)."
+                ),
+                why_it_works=(
+                    "Anaerobic denitrifying bacteria (Pseudomonas stutzeri) in the saturated rhizosphere convert mobile agricultural "
+                    "nitrate (NO3-) into inert atmospheric N2 gas before reaching aquatic streams. Highly porous biochar irreversibly "
+                    "sorbs hydrophobic pesticide residues, halting ecotoxicological disruption of aquatic and soil microfauna."
+                ),
+                environmental_variables_coupled=[
+                    f"Human Chemical Pollution & Runoff ({chem or 'synthetic residues'})",
+                    "Aquatic & Subsurface Macroinvertebrate Richness",
+                    f"Crop Hydrologic Discharge across {region}",
+                    f"Soil Organic Carbon ({soc}%) Stabilization"
+                ],
+                impacted_metrics=[
+                    MetricImpact(
+                        metric_name="Nitrate & Agrochemical Runoff Interception",
+                        projected_improvement="60% to 78% reduction in dissolved nitrogen leaching into local waterways",
+                        time_horizon="short-term (0-6 mo)"
+                    ),
+                    MetricImpact(
+                        metric_name="Synthetic Fertilizer Input Requirement",
+                        projected_improvement="30% to 45% reduction without yield penalty through closed-loop nutrient retention",
+                        time_horizon="medium-term (1-3 yrs)"
+                    ),
+                    MetricImpact(
+                        metric_name="Aquatic & Benthic Biodiversity Recovery",
+                        projected_improvement="+55% to +80% increase in Ephemeroptera, Plecoptera, and Trichoptera (EPT) index",
+                        time_horizon="medium-term (1-3 yrs)"
+                    )
+                ],
+                scientific_citations=[
+                    ScientificCitation(
+                        source="United Nations Environment Programme (UNEP) & FAO Global Soil Partnership",
+                        title="Global Assessment of Soil Pollution: Remediation of Nitrate and Agrochemical Runoff",
+                        year=2021,
+                        document_id="UNEP_POLLUTION_001"
+                    ),
+                    ScientificCitation(
+                        source="FAO Forestry & IPBES",
+                        title="The State of the World's Forests: Mitigating Agricultural Edge Effects",
+                        year=2022,
+                        document_id="FAO_FOREST_002"
+                    )
+                ],
+                time_horizon_summary="Nitrate interception begins upon root establishment (3-6 mo); macroinvertebrate colonization within 12-18 mo.",
+                confidence_score=0.94
+            )
+            interventions.append(int4)
+
         return interventions
 
     def reason(

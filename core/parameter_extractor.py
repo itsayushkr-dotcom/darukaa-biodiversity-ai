@@ -111,6 +111,12 @@ class ParameterExtractor:
         if "pollinator" in text_lower or "bee" in text_lower:
             extracted["pollinator_activity"] = "severely_depleted"
 
+        # 8. Human Impact & Chemical Pollution (Pillar 5)
+        if any(w in text_lower for w in ["pesticide", "chemical", "fertilizer overuse", "nitrate", "runoff", "pollution"]):
+            extracted["chemical_intensity"] = "high_synthetic"
+        if any(w in text_lower for w in ["deforest", "forest clearing", "cleared land", "edge effect", "logging"]):
+            extracted["deforestation_history"] = "severe_fragmentation"
+
         return extracted
 
     @classmethod
