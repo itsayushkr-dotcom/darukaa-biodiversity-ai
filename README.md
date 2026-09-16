@@ -44,34 +44,37 @@ Generic advice such as *"Use sustainable practices"* or *"Water your plants"* is
 ## 2. System Architecture
 
 ```mermaid
-graph TD
-    User([User: Text / JSON / Geo-Coords]) --> Gateway[Streamlit Scientist Workbench / FastAPI REST]
+flowchart TD
+    User["User: Text / JSON / Geo-Coordinates"] --> Gateway["Streamlit Workbench / FastAPI Gateway"]
     
-    subgraph Core Intelligence Engine [AI Environmental Scientist]
-        Parser[1. Parameter Extractor & Entity Recognizer]
-        Validator[2. Completeness & Clarifying Engine]
-        GeoResolver[3. Geo-Spatial Agro-Ecological Resolver]
-        RAG[4. Scientific Knowledge Vector RAG Store]
-        Reasoner[5. Multi-Metric Causal Reasoning Engine]
-        Synthesizer[6. Evidence-Backed Structured Output Generator]
+    subgraph Engine ["AI Environmental Scientist Engine"]
+        Parser["1. Parameter Extractor"]
+        Validator["2. Completeness & Clarifying Engine"]
+        GeoResolver["3. Geo-Spatial Context Resolver"]
+        RAG["4. Scientific Vector RAG Store"]
+        Reasoner["5. Multi-Metric Causal Reasoning Engine"]
+        Synthesizer["6. Structured Scientific Generator"]
     end
 
-    subgraph Scientific Knowledge Layer [Indexed Peer-Reviewed Literature]
-        FAO[FAO RECSOIL & Agroforestry Guidelines]
-        IPCC[IPCC Land Degradation & SRCCL Ch. 4]
-        IPBES[IPBES Pollinators & Biodiversity Assessment]
-        ICAR[ICAR / CSSRI Soil Salinity & Hydrology Models]
+    subgraph KnowledgeBase ["Indexed Scientific Knowledge Layer"]
+        FAO["FAO RECSOIL Guidelines"]
+        IPCC["IPCC SRCCL Ch. 4 Land Degradation"]
+        IPBES["IPBES Pollinators & Habitat"]
+        ICAR["ICAR Soil & Hydrology Models"]
     end
 
     User --> Parser
     Parser --> Validator
-    Validator -- "If < 3 environmental variables" --> Clarify[Ask Clarifying Questions] --> Gateway
-    Validator -- "If >= 3 variables present" --> GeoResolver
+    Validator -- "If < 3 variables (Incomplete)" --> Clarify["Ask Clarifying Follow-ups"] --> Gateway
+    Validator -- "If >= 3 variables (Complete)" --> GeoResolver
     GeoResolver --> RAG
-    Scientific Knowledge Layer --> RAG
+    FAO --> RAG
+    IPCC --> RAG
+    IPBES --> RAG
+    ICAR --> RAG
     RAG --> Reasoner
     Reasoner --> Synthesizer
-    Synthesizer --> Output[Structured Scientific Interventions + Citations] --> Gateway
+    Synthesizer --> Output["Evidence-Backed Interventions + Quantified Delta Metrics"] --> Gateway
 ```
 
 ---
