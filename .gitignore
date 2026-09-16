@@ -9,3 +9,4 @@ htmlcov/
 dist/
 build/
 .streamlit/
+sync_to_desktop.py
