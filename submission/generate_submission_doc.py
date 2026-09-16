@@ -29,9 +29,11 @@ def create_submission_document(output_path: str):
     p = doc.add_paragraph()
     p.add_run("• GitHub Repository: ").bold = True
     p.add_run("https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai\n")
-    p.add_run("• Live Demo URL: ").bold = True
-    p.add_run("https://darukaa-biodiversity-ai.streamlit.app (or local workbench at http://localhost:8501)\n")
-    p.add_run("• API Documentation URL: ").bold = True
+    p.add_run("• Live Deployed Web Application: ").bold = True
+    p.add_run("https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/\n")
+    p.add_run("• Local Workbench URL: ").bold = True
+    p.add_run("http://localhost:8501 (via python -m streamlit run app.py)\n")
+    p.add_run("• REST API Documentation URL: ").bold = True
     p.add_run("http://localhost:8000/docs (Interactive Swagger/OpenAPI)")
 
     # Reviewer Access
