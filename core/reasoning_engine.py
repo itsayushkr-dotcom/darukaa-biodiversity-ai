@@ -134,7 +134,7 @@ class MultiMetricReasoningEngine:
                     title="Agroforestry and Landscape Restoration Technical Guidelines",
                     year=2020,
                     document_id="FAO_SOC_001",
-                    url="https://www.fao.org/global-soil-partnership/recsoil/en/#:~:text=Recarbonization%20of%20global%20soils",
+                    url="https://openknowledge.fao.org/handle/20.500.14283/cb6378en",
                     section_or_page="Section 2.1: Technical Framework for Soil Carbon Sequestration, pp. 14–22",
                     exact_quote_or_finding="Perennial root systems improve hydraulic redistribution, enhancing water table stabilization and deep carbon deposition in semi-arid zones."
                 )
@@ -185,7 +185,7 @@ class MultiMetricReasoningEngine:
                     title="Recarbonization of Global Soils (RECSOIL): A Framework for Action",
                     year=2020,
                     document_id="FAO_SOC_001",
-                    url="https://www.fao.org/global-soil-partnership/recsoil/en/#:~:text=Recarbonization%20of%20global%20soils",
+                    url="https://openknowledge.fao.org/handle/20.500.14283/cb6378en",
                     section_or_page="Technical Report, Pillar 1: Sustainable Soil Management, pp. 28–34",
                     exact_quote_or_finding="Multi-species legume cover crops (Vicia, Trifolium, Crotalaria) generate low C:N ratio organic inputs that stimulate fungal necromass formation, increasing SOC by 0.2–0.5 t C/ha/yr."
                 ),
@@ -194,7 +194,7 @@ class MultiMetricReasoningEngine:
                     title="Soil fungal:bacterial ratios and their relationship with soil carbon sequestration",
                     year=2021,
                     document_id="IPBES_BIO_002",
-                    url="https://www.nature.com/articles/s41559-019-0885-4#:~:text=fungal,carbon%20sequestration",
+                    url="https://www.nature.com/articles/s41559-019-0885-4",
                     section_or_page="Article 10.1038/s41559-019-0885-4, Section: Fungal Necromass Dynamics",
                     exact_quote_or_finding="Fungal-dominated soil microbial communities exhibit 1.5–2.8× greater carbon stabilization efficiency in micro-aggregates compared to bacteria-dominated communities under monoculture systems."
                 )
@@ -245,7 +245,7 @@ class MultiMetricReasoningEngine:
                     title="Thematic Assessment Report on Pollinators, Pollination and Food Production",
                     year=2018,
                     document_id="IPBES_BIO_001",
-                    url="https://www.ipbes.net/assessment-reports/pollinators#:~:text=pollinators",
+                    url="https://www.ipbes.net/assessment-reports/pollinators",
                     section_or_page="Chapter 5: Managing Agricultural Landscapes for Pollinators, Section 5.3.4 (pp. 340–348)",
                     exact_quote_or_finding="Dedication of 6–8% arable field margins to native perennial nectar-rich flora restores solitary bee and hoverfly visitation densities by +60% to +110%, reducing pest damage through carabid predator recruitment."
                 ),
@@ -254,7 +254,7 @@ class MultiMetricReasoningEngine:
                     title="Land Degradation Neutrality and Ecological Connectivity Guidelines",
                     year=2022,
                     document_id="IPCC_SRCCL_002",
-                    url="https://www.unccd.int/resources/publications/scientific-conceptual-framework-land-degradation-neutrality#:~:text=connectivity",
+                    url="https://www.unccd.int/land-and-life/land-degradation-neutrality/overview",
                     section_or_page="Module 3: Ecological Connectivity and Biological Landscape Permeability, pp. 48–56",
                     exact_quote_or_finding="Uncultivated perennial beetle banks and ecological corridors increase beneficial predator dispersal across agricultural matrices by 45–60%, lowering chemical insecticide demand by 30–45%."
                 )
@@ -308,7 +308,7 @@ class MultiMetricReasoningEngine:
                         title="Global Assessment of Soil Pollution: Remediation of Nitrate and Agrochemical Runoff",
                         year=2021,
                         document_id="UNEP_POLLUTION_001",
-                        url="https://www.unep.org/resources/report/global-assessment-soil-pollution#:~:text=remediation",
+                        url="https://www.unep.org/resources/report/global-assessment-soil-pollution",
                         section_or_page="Chapter 6: Remediation and Ecological Interception of Agrochemical Runoff, pp. 210–225",
                         exact_quote_or_finding="Multi-tier vegetated riparian buffers (woody perennials + switchgrass) intercept 70–88% of dissolved nitrate-nitrogen and organophosphate runoff before reaching surface water tables."
                     ),
@@ -317,7 +317,7 @@ class MultiMetricReasoningEngine:
                         title="The State of the World's Forests: Mitigating Agricultural Edge Effects",
                         year=2022,
                         document_id="FAO_FOREST_002",
-                        url="https://www.fao.org/state-of-forests/en/#:~:text=forests",
+                        url="https://openknowledge.fao.org/handle/20.500.14283/cb9360en",
                         section_or_page="Chapter 3: Mitigating Agricultural Edge Effects & Canopy Microclimate, pp. 84–98",
                         exact_quote_or_finding="Native tree buffer belts reduce agricultural edge desiccation by 35% and boost benthic and terrestrial macroinvertebrate colonization by +55% to +80%."
                     )

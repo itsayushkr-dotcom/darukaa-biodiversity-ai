@@ -161,43 +161,43 @@ class EnvironmentalVectorStore:
             doc_id = doc.get("id", "")
             doc_meta = {
                 "FAO_SOC_001": (
-                    "https://www.fao.org/global-soil-partnership/recsoil/en/#:~:text=Recarbonization%20of%20global%20soils",
-                    "Section 2.1: Technical Framework for Soil Carbon Sequestration, pp. 14–22"
+                    "https://openknowledge.fao.org/handle/20.500.14283/cb6378en",
+                    "Technical Manual: Recarbonizing Global Soils, Section 2.1 (pp. 14–22)"
                 ),
                 "FAO_SOC_002": (
-                    "https://www.fao.org/conservation-agriculture/en/#:~:text=Conservation%20Agriculture",
+                    "https://www.fao.org/conservation-agriculture/en/",
                     "Pillar 1: Minimum Mechanical Soil Disturbance & Residue Cover, pp. 5–12"
                 ),
                 "IPCC_SRCCL_001": (
-                    "https://www.ipcc.ch/srccl/chapter/chapter-4/#:~:text=agroforestry,carbon",
+                    "https://www.ipcc.ch/srccl/chapter/chapter-4/",
                     "Chapter 4: Land Degradation, Section 4.8.4 & 4.9.2 (pp. 385–392)"
                 ),
                 "IPCC_SRCCL_002": (
-                    "https://www.unccd.int/resources/publications/scientific-conceptual-framework-land-degradation-neutrality#:~:text=connectivity",
+                    "https://www.unccd.int/land-and-life/land-degradation-neutrality/overview",
                     "Module 3: Ecological Connectivity and Landscape Permeability, pp. 48–56"
                 ),
                 "IPBES_BIO_001": (
-                    "https://www.ipbes.net/assessment-reports/pollinators#:~:text=pollinators",
+                    "https://www.ipbes.net/assessment-reports/pollinators",
                     "Chapter 5: Managing Landscapes for Pollinators, Section 5.3.4 (pp. 340–348)"
                 ),
                 "IPBES_BIO_002": (
-                    "https://www.nature.com/articles/s41559-019-0885-4#:~:text=fungal,carbon%20sequestration",
+                    "https://www.nature.com/articles/s41559-019-0885-4",
                     "Nature Ecol Evol 10.1038/s41559-019-0885-4, Section: Fungal Necromass Dynamics"
                 ),
                 "SOIL_PHYS_001": (
-                    "https://www.fao.org/global-soil-partnership/areas-of-work/soil-salinity/en/#:~:text=saline",
+                    "https://www.fao.org/soils-portal/soil-management/management-of-some-problem-soils/salt-affected-soils/en/",
                     "Global Map of Salt-Affected Soils & CSSRI Technical Bulletin No. 42"
                 ),
                 "SOIL_PHYS_002": (
-                    "https://www.wocat.net/en/global-slm-database/#:~:text=soil",
+                    "https://www.wocat.net/",
                     "WOCAT Sustainable Land Management Practice Database #SLM-104"
                 ),
                 "UNEP_POLLUTION_001": (
-                    "https://www.unep.org/resources/report/global-assessment-soil-pollution#:~:text=remediation",
+                    "https://www.unep.org/resources/report/global-assessment-soil-pollution",
                     "Chapter 6: Remediation and Ecological Interception of Agrochemical Runoff, pp. 210–225"
                 ),
                 "FAO_FOREST_002": (
-                    "https://www.fao.org/state-of-forests/en/#:~:text=forests",
+                    "https://openknowledge.fao.org/handle/20.500.14283/cb9360en",
                     "Chapter 3: Mitigating Agricultural Edge Effects & Canopy Microclimate, pp. 84–98"
                 )
             }

@@ -237,7 +237,7 @@ with tab_chat:
                                     st.markdown("**Evidence Citations (Clickable ↗):**")
                                     citations_html = ""
                                     for c in it.scientific_citations:
-                                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                                        link_url = getattr(c, 'url', None) or "https://openknowledge.fao.org/handle/20.500.14283/cb6378en"
                                         sec = getattr(c, 'section_or_page', '') or ''
                                         tip = f"{c.title} — {sec}" if sec else c.title
                                         citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='{tip}'>📖 {c.source} ({c.year}) ↗</a> "
@@ -247,7 +247,7 @@ with tab_chat:
                                     for c in it.scientific_citations:
                                         sec = getattr(c, 'section_or_page', None)
                                         quote = getattr(c, 'exact_quote_or_finding', None)
-                                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                                        link_url = getattr(c, 'url', None) or "https://openknowledge.fao.org/handle/20.500.14283/cb6378en"
                                         st.markdown(f"**{c.title}**")
                                         st.caption(f"🏛️ **Authority:** {c.source} ({c.year})")
                                         if sec:
@@ -367,7 +367,7 @@ with tab_structured:
                     st.markdown("**Evidence Citations (Clickable ↗):**")
                     citations_html = ""
                     for c in it.scientific_citations:
-                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                        link_url = getattr(c, 'url', None) or "https://openknowledge.fao.org/handle/20.500.14283/cb6378en"
                         sec = getattr(c, 'section_or_page', '') or ''
                         tip = f"{c.title} — {sec}" if sec else c.title
                         citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='{tip}'>📖 {c.source} ({c.year}) ↗</a> "
@@ -377,7 +377,7 @@ with tab_structured:
                     for c in it.scientific_citations:
                         sec = getattr(c, 'section_or_page', None)
                         quote = getattr(c, 'exact_quote_or_finding', None)
-                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                        link_url = getattr(c, 'url', None) or "https://openknowledge.fao.org/handle/20.500.14283/cb6378en"
                         st.markdown(f"**{c.title}**")
                         st.caption(f"🏛️ **Authority:** {c.source} ({c.year})")
                         if sec:
