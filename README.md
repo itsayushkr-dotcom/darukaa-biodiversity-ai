@@ -5,7 +5,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688.svg)](https://fastapi.tiangolo.com)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-FF4B4B.svg)](https://streamlit.io)
-[![Tests Passing](https://img.shields.io/badge/tests-7%20passed%2C%20100%25-brightgreen.svg)]()
+[![Tests Passing](https://img.shields.io/badge/tests-9%20passed%2C%20100%25-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -187,10 +187,12 @@ test_criterion_1_and_2_primary_problem_statement_usecase ... ok
 test_criterion_3_knowledge_system_retrieval ... ok
 test_criterion_4_incomplete_input_clarifying_question ... ok
 test_criterion_4_multi_turn_conversation_memory ... ok
+test_output_quality_confidence_and_time_horizon ... ok
+test_pillar_5_human_impact_and_pollution_scenario ... ok
 test_structured_json_input_support ... ok
 
 ----------------------------------------------------------------------
-Ran 7 tests in 0.017s
+Ran 9 tests in 0.038s
 
 OK (100% Passed)
 ```
