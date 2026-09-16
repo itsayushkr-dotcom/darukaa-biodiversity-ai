@@ -25,46 +25,78 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling for Scientific Aesthetic
+# Custom Styling for Vibrant High-Contrast Scientific Aesthetic
 st.markdown("""
 <style>
+    /* Vibrant Gradient High-Contrast Title */
     .main-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: #1b4332;
-        margin-bottom: 0.2rem;
+        font-size: 2.3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #00f2fe 0%, #4facfe 35%, #43e97b 75%, #38ef7d 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.5px;
+        display: inline-block;
     }
     .sub-title {
-        font-size: 1.1rem;
-        color: #40916c;
+        font-size: 1.05rem;
+        color: #e2e8f0 !important;
+        font-weight: 400;
         margin-bottom: 1.5rem;
+        opacity: 0.92;
     }
     .card-box {
-        background-color: #f8f9fa;
-        border-left: 5px solid #2d6a4f;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-left: 4px solid #00f2fe;
         padding: 1.2rem;
         border-radius: 8px;
         margin-bottom: 1.2rem;
     }
     .citation-badge {
-        background-color: #e9ecef;
-        color: #212529;
+        background-color: rgba(56, 189, 248, 0.22) !important;
+        color: #38bdf8 !important;
+        border: 1px solid rgba(56, 189, 248, 0.45);
         font-size: 0.85rem;
-        padding: 4px 8px;
-        border-radius: 4px;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: 6px;
         display: inline-block;
         margin-top: 4px;
         margin-right: 6px;
     }
     .metric-badge {
-        background-color: #d8f3dc;
-        color: #081c15;
+        background-color: rgba(52, 211, 153, 0.22) !important;
+        color: #34d399 !important;
+        border: 1px solid rgba(52, 211, 153, 0.45);
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         padding: 4px 10px;
-        border-radius: 4px;
+        border-radius: 6px;
         display: inline-block;
         margin: 3px 0;
+    }
+    .variable-pill {
+        background-color: rgba(168, 85, 247, 0.22) !important;
+        color: #d8b4fe !important;
+        border: 1px solid rgba(168, 85, 247, 0.45);
+        font-weight: 500;
+        font-size: 0.82rem;
+        padding: 3px 9px;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 2px 4px 2px 0;
+    }
+    .confidence-badge-high {
+        background-color: rgba(34, 197, 94, 0.22) !important;
+        color: #4ade80 !important;
+        border: 1px solid rgba(34, 197, 94, 0.5);
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 4px 10px;
+        border-radius: 6px;
+        display: inline-block;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -184,12 +216,13 @@ with tab_chat:
                                 col_m1, col_m2 = st.columns([2, 1])
                                 with col_m1:
                                     st.markdown("**Coupled Variables Connected (>= 3):**")
-                                    st.markdown(" • " + " • ".join(it.environmental_variables_coupled))
+                                    pills_html = "".join([f"<span class='variable-pill'>🔗 {var}</span>" for var in it.environmental_variables_coupled])
+                                    st.markdown(pills_html, unsafe_allow_html=True)
                                     st.markdown("**Impacted Metrics & Quantified Estimates:**")
                                     for m in it.impacted_metrics:
                                         st.markdown(f"- <span class='metric-badge'>{m.metric_name}</span>: **{m.projected_improvement}** *({m.time_horizon})*", unsafe_allow_html=True)
                                 with col_m2:
-                                    st.markdown(f"**Confidence Level:** `{it.confidence_score * 100:.0f}%`")
+                                    st.markdown(f"**Confidence Level:** <span class='confidence-badge-high'>{it.confidence_score * 100:.0f}% High Evidence</span>", unsafe_allow_html=True)
                                     st.markdown(f"**Time Horizon:** {it.time_horizon_summary}")
                                     st.markdown("**Evidence Citations:**")
                                     for c in it.scientific_citations:
