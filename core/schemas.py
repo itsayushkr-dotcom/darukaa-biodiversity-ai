@@ -68,7 +68,9 @@ class ScientificCitation(BaseModel):
     title: str
     year: int
     document_id: Optional[str] = None
-    url: Optional[str] = Field(None, description="Official publication URL or DOI link")
+    url: Optional[str] = Field(None, description="Official publication URL with exact section anchor / text fragment")
+    section_or_page: Optional[str] = Field(None, description="Exact chapter, section, or page number e.g. 'Ch. 4, Section 4.8.4, pp. 385-392'")
+    exact_quote_or_finding: Optional[str] = Field(None, description="Specific quantified finding or excerpt from the official document")
 
 
 class EnvironmentalIntervention(BaseModel):

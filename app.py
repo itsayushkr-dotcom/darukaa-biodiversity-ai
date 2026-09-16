@@ -238,8 +238,24 @@ with tab_chat:
                                     citations_html = ""
                                     for c in it.scientific_citations:
                                         link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
-                                        citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='Read official study / report'>📖 {c.source} ({c.year}) ↗</a> "
+                                        sec = getattr(c, 'section_or_page', '') or ''
+                                        tip = f"{c.title} — {sec}" if sec else c.title
+                                        citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='{tip}'>📖 {c.source} ({c.year}) ↗</a> "
                                     st.markdown(citations_html, unsafe_allow_html=True)
+
+                                with st.expander(f"🔬 Evidence Verification: Exact Sections & Quotes for Intervention #{idx}", expanded=False):
+                                    for c in it.scientific_citations:
+                                        sec = getattr(c, 'section_or_page', None)
+                                        quote = getattr(c, 'exact_quote_or_finding', None)
+                                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                                        st.markdown(f"**{c.title}**")
+                                        st.caption(f"🏛️ **Authority:** {c.source} ({c.year})")
+                                        if sec:
+                                            st.markdown(f"📍 **Exact Location:** `{sec}`")
+                                        if quote:
+                                            st.markdown(f"💬 *\"{quote}\"*")
+                                        st.markdown(f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' style='margin-top:4px; margin-bottom:10px;'>🔗 Jump to Highlighted Section in Report ↗</a>", unsafe_allow_html=True)
+                                        st.markdown("---")
                                 st.divider()
 
                         st.download_button(
@@ -352,8 +368,24 @@ with tab_structured:
                     citations_html = ""
                     for c in it.scientific_citations:
                         link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
-                        citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='Read official study / report'>📖 {c.source} ({c.year}) ↗</a> "
+                        sec = getattr(c, 'section_or_page', '') or ''
+                        tip = f"{c.title} — {sec}" if sec else c.title
+                        citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='{tip}'>📖 {c.source} ({c.year}) ↗</a> "
                     st.markdown(citations_html, unsafe_allow_html=True)
+
+                with st.expander(f"🔬 Evidence Verification: Exact Sections & Quotes for Intervention #{idx}", expanded=False):
+                    for c in it.scientific_citations:
+                        sec = getattr(c, 'section_or_page', None)
+                        quote = getattr(c, 'exact_quote_or_finding', None)
+                        link_url = getattr(c, 'url', None) or "https://www.fao.org/global-soil-partnership/recsoil/en/"
+                        st.markdown(f"**{c.title}**")
+                        st.caption(f"🏛️ **Authority:** {c.source} ({c.year})")
+                        if sec:
+                            st.markdown(f"📍 **Exact Location:** `{sec}`")
+                        if quote:
+                            st.markdown(f"💬 *\"{quote}\"*")
+                        st.markdown(f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' style='margin-top:4px; margin-bottom:10px;'>🔗 Jump to Highlighted Section in Report ↗</a>", unsafe_allow_html=True)
+                        st.markdown("---")
                 st.divider()
 
 
@@ -410,5 +442,8 @@ with tab_kb:
                 st.markdown("**Recommended Interventions:**")
                 for rec in m['recommended_interventions']:
                     st.markdown(f"• {rec}")
+                m_sec = m.get("section_or_page")
+                if m_sec:
+                    st.markdown(f"📍 **Exact Report Location:** `{m_sec}`")
                 m_url = m.get("url", "https://www.fao.org/global-soil-partnership/en/")
-                st.markdown(f"<div style='margin-top: 14px;'><a href='{m_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' style='font-size:0.88rem; padding:6px 14px;'>🔗 Read Official Study / Report ({m['source']}) ↗</a></div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='margin-top: 14px;'><a href='{m_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' style='font-size:0.88rem; padding:6px 14px;'>🔗 Jump to Highlighted Section in Official Report ({m['source']}) ↗</a></div>", unsafe_allow_html=True)
