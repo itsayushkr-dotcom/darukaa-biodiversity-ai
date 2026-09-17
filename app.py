@@ -26,124 +26,194 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling for Minimalist, Ultra-Clean Forest Emerald Aesthetic
+# Custom Styling for Minimalist, Calm Forest Green Aesthetic (High Legibility, No Flashy Neon)
 st.markdown("""
 <style>
-    /* Global Clean Font & Background Accents */
+    /* Global Container & Background */
+    .stApp {
+        background-color: #07130e !important;
+        color: #e2e8f0 !important;
+    }
     .main .block-container {
-        padding-top: 1.8rem;
-        padding-bottom: 2.5rem;
-        max-width: 1200px;
+        padding-top: 1.6rem;
+        padding-bottom: 2.2rem;
+        max-width: 1180px;
     }
     
-    /* Vibrant Gradient Minimalist Title */
+    /* Clean Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #05100c !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+    [data-testid="stSidebar"] p, [data-testid="stSidebar"] span, [data-testid="stSidebar"] div {
+        color: #cbd5e1 !important;
+    }
+
+    /* Minimalist, Calm Title */
     .main-title {
-        font-size: 2.1rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #00f2fe 0%, #4facfe 35%, #43e97b 75%, #38ef7d 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 1.85rem;
+        font-weight: 700;
+        color: #f8fafc;
         margin-bottom: 0.15rem;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.4px;
         display: inline-block;
     }
+    .main-title-sub {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #6ee7b7;
+    }
     .sub-title {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         color: #94a3b8 !important;
         font-weight: 400;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.1rem;
         letter-spacing: 0.1px;
     }
     
-    /* Minimalist Glass Cards */
+    /* Minimalist Forest Cards */
     .card-box {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #091812;
+        border: 1px solid rgba(255, 255, 255, 0.06);
         border-left: 3px solid #10b981;
-        padding: 1rem 1.2rem;
-        border-radius: 8px;
-        margin-bottom: 1rem;
+        padding: 0.9rem 1.1rem;
+        border-radius: 7px;
+        margin-bottom: 0.9rem;
     }
     
-    /* Citation & Metric Badges */
+    /* High-Contrast Info & Alerts (Replaces unreadable dark blue) */
+    div[data-testid="stAlert"] {
+        background-color: #0a1c14 !important;
+        border: 1px solid rgba(16, 185, 129, 0.28) !important;
+        border-radius: 7px !important;
+        padding: 0.9rem 1.1rem !important;
+    }
+    div[data-testid="stAlert"] p, div[data-testid="stAlert"] div, div[data-testid="stAlert"] span {
+        color: #f1f5f9 !important;
+        font-size: 0.94rem !important;
+        line-height: 1.6 !important;
+    }
+    div[data-testid="stAlert"] svg {
+        fill: #34d399 !important;
+    }
+    
+    /* Chat Messages: Crisp Text on Dark Forest Surface */
+    div[data-testid="stChatMessage"] {
+        background-color: #081611 !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 8px !important;
+        padding: 0.85rem 1.1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    div[data-testid="stChatMessage"] p, div[data-testid="stChatMessage"] div {
+        color: #e2e8f0 !important;
+        font-size: 0.94rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Minimalist, Calm Forest Buttons (No Flashy Neon Cyan) */
+    .stButton > button {
+        background-color: #091c14 !important;
+        color: #e2e8f0 !important;
+        border: 1px solid rgba(16, 185, 129, 0.2) !important;
+        font-weight: 500 !important;
+        font-size: 0.88rem !important;
+        border-radius: 7px !important;
+        padding: 0.4rem 0.85rem !important;
+        transition: all 0.15s ease !important;
+    }
+    .stButton > button:hover {
+        background-color: #0e271c !important;
+        border-color: #10b981 !important;
+        color: #ffffff !important;
+    }
+    
+    /* Primary Action Buttons (+ New Consultation & Active Session) */
+    .stButton > button[kind="primary"], .stButton > button[data-testid="baseButton-primary"] {
+        background-color: #064e3b !important;
+        color: #ffffff !important;
+        border: 1px solid #059669 !important;
+        font-weight: 600 !important;
+    }
+    .stButton > button[kind="primary"]:hover, .stButton > button[data-testid="baseButton-primary"]:hover {
+        background-color: #047857 !important;
+        border-color: #10b981 !important;
+        color: #ffffff !important;
+    }
+
+    /* Muted Harmonious Badges */
     .citation-badge {
-        background-color: rgba(56, 189, 248, 0.15) !important;
-        color: #38bdf8 !important;
-        border: 1px solid rgba(56, 189, 248, 0.35) !important;
-        font-size: 0.82rem;
+        background-color: #072217 !important;
+        color: #a7f3d0 !important;
+        border: 1px solid rgba(16, 185, 129, 0.28) !important;
+        font-size: 0.81rem;
         font-weight: 500;
-        padding: 3px 9px;
-        border-radius: 6px;
+        padding: 3px 8px;
+        border-radius: 5px;
         display: inline-block;
         margin-top: 3px;
         margin-right: 5px;
         text-decoration: none !important;
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.15s ease;
     }
     .citation-badge:hover {
-        background-color: rgba(56, 189, 248, 0.35) !important;
+        background-color: #0d3323 !important;
+        border-color: #34d399 !important;
         color: #ffffff !important;
-        border-color: #38bdf8 !important;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
     }
     .metric-badge {
-        background-color: rgba(52, 211, 153, 0.18) !important;
-        color: #34d399 !important;
-        border: 1px solid rgba(52, 211, 153, 0.35);
+        background-color: #072217 !important;
+        color: #6ee7b7 !important;
+        border: 1px solid rgba(16, 185, 129, 0.22);
         font-weight: 600;
-        font-size: 0.85rem;
-        padding: 3px 8px;
-        border-radius: 5px;
+        font-size: 0.83rem;
+        padding: 2px 7px;
+        border-radius: 4px;
         display: inline-block;
         margin: 2px 0;
     }
     .variable-pill {
-        background-color: rgba(168, 85, 247, 0.18) !important;
-        color: #d8b4fe !important;
-        border: 1px solid rgba(168, 85, 247, 0.35);
+        background-color: rgba(255, 255, 255, 0.03) !important;
+        color: #cbd5e1 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08);
         font-weight: 500;
-        font-size: 0.8rem;
-        padding: 2px 8px;
-        border-radius: 5px;
+        font-size: 0.78rem;
+        padding: 2px 7px;
+        border-radius: 4px;
         display: inline-block;
         margin: 2px 4px 2px 0;
     }
     .confidence-badge-high {
-        background-color: rgba(34, 197, 94, 0.18) !important;
-        color: #4ade80 !important;
-        border: 1px solid rgba(34, 197, 94, 0.4);
-        font-weight: 700;
-        font-size: 0.82rem;
-        padding: 3px 8px;
-        border-radius: 5px;
+        background-color: #072217 !important;
+        color: #34d399 !important;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        font-weight: 600;
+        font-size: 0.81rem;
+        padding: 2px 7px;
+        border-radius: 4px;
         display: inline-block;
     }
     
-    /* Clean Tab Styling */
+    /* Clean Minimalist Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 4px;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-bottom: 2px;
     }
     .stTabs [data-baseweb="tab"] {
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.92rem;
+        padding: 6px 14px;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 0.91rem;
         color: #94a3b8;
+        background: transparent !important;
+        border: none !important;
     }
     .stTabs [aria-selected="true"] {
         color: #34d399 !important;
-        border-bottom: 2px solid #34d399 !important;
-        background: rgba(16, 185, 129, 0.08);
-    }
-    
-    /* History & Suggestion Buttons */
-    .stButton button {
-        border-radius: 8px;
-        transition: all 0.15s ease-in-out;
+        border-bottom: 2px solid #10b981 !important;
+        font-weight: 600;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -169,7 +239,7 @@ if "consultations" not in st.session_state:
     initial_id = "session_default"
     st.session_state.consultations = {
         initial_id: {
-            "title": "Biodiversity is declining on...",
+            "title": "Ecological Diagnosis",
             "chat_history": [],
             "agent": BiodiversityIntelligenceAgent(vector_store=vector_store)
         }
@@ -193,20 +263,20 @@ st.session_state.chat_history = chat_history
 # Sidebar: Brand, New Consultation, & History List
 # ----------------------------------------------------
 with st.sidebar:
-    # Sleek Brand Header matching ChatGPT/Claude aesthetic
+    # Minimalist, Clean Brand Header
     st.markdown("""
-    <div style='display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem; padding: 4px 0;'>
-        <div style='background: linear-gradient(135deg, #059669 0%, #10b981 100%); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); flex-shrink: 0;'>
-            <span style='font-size: 1.5rem;'>🌿</span>
+    <div style='display: flex; align-items: center; gap: 10px; margin-bottom: 1.1rem; padding: 2px 0;'>
+        <div style='background: #064e3b; width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(16, 185, 129, 0.3); flex-shrink: 0;'>
+            <span style='font-size: 1.35rem;'>🌿</span>
         </div>
         <div>
-            <div style='font-size: 1.25rem; font-weight: 800; color: #f8fafc; line-height: 1.15;'>Darukaa.Earth</div>
-            <div style='font-size: 0.76rem; color: #34d399; font-weight: 500; letter-spacing: 0.2px;'>AI Biodiversity Intelligence</div>
+            <div style='font-size: 1.15rem; font-weight: 700; color: #f8fafc; line-height: 1.15;'>Darukaa.Earth</div>
+            <div style='font-size: 0.74rem; color: #94a3b8; font-weight: 400;'>AI Biodiversity Intelligence</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # Prominent "+ New Consultation" Action
+    # Clean "+ New Consultation" Action
     if st.button("➕ New Consultation", key="btn_new_consult", use_container_width=True, type="primary"):
         new_id = f"session_{len(st.session_state.consultations) + 1}_{int(time.time())}"
         st.session_state.consultations[new_id] = {
@@ -219,7 +289,7 @@ with st.sidebar:
 
     # Section: CONSULTATION HISTORY
     st.markdown("""
-    <div style='margin-top: 1.4rem; margin-bottom: 0.5rem; font-size: 0.72rem; font-weight: 700; color: #6ee7b7; letter-spacing: 1px;'>
+    <div style='margin-top: 1.3rem; margin-bottom: 0.45rem; font-size: 0.7rem; font-weight: 700; color: #6ee7b7; letter-spacing: 0.8px;'>
         CONSULTATION HISTORY
     </div>
     """, unsafe_allow_html=True)
@@ -233,7 +303,7 @@ with st.sidebar:
             st.session_state.active_session_id = s_id
             st.rerun()
 
-    st.markdown("<div style='margin: 1.2rem 0; border-top: 1px solid rgba(255,255,255,0.08);'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='margin: 1rem 0; border-top: 1px solid rgba(255,255,255,0.06);'></div>", unsafe_allow_html=True)
 
     # Compact Collapsible Benchmark Presets
     with st.expander("🧪 Benchmark Presets", expanded=False):
@@ -259,7 +329,7 @@ with st.sidebar:
         else:
             st.caption("Autonomous Scientific Engine Mode (Offline Capable RAG)")
         
-        st.markdown("<div style='margin-top: 8px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='margin-top: 6px;'></div>", unsafe_allow_html=True)
         if st.button("🔄 Reset Current Chat", key="btn_reset_active", use_container_width=True):
             active_session["chat_history"] = []
             active_session["agent"].reset_memory()
@@ -269,9 +339,9 @@ with st.sidebar:
 
 
 # ----------------------------------------------------
-# Main Header
+# Main Header (Minimalist, Calm Typography)
 # ----------------------------------------------------
-st.markdown("<div class='main-title'>🌿 Darukaa.Earth — AI Biodiversity Intelligence</div>", unsafe_allow_html=True)
+st.markdown("<div class='main-title'>🌿 Darukaa.Earth <span class='main-title-sub'>| AI Biodiversity Intelligence</span></div>", unsafe_allow_html=True)
 st.markdown("<div class='sub-title'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>", unsafe_allow_html=True)
 
 
@@ -293,15 +363,15 @@ with tab_chat:
     # Empty State: Starter Prompt Cards
     if len(chat_history) == 0:
         st.markdown("""
-        <div style='background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.18); border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;'>
-            <h4 style='margin: 0 0 0.4rem 0; color: #34d399; font-size: 1.15rem;'>🌿 Welcome to your Ecological Consultation</h4>
-            <p style='margin: 0; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;'>
+        <div style='background: #081a13; border: 1px solid rgba(16, 185, 129, 0.15); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 1.1rem;'>
+            <h4 style='margin: 0 0 0.35rem 0; color: #34d399; font-size: 1.08rem; font-weight: 600;'>🌿 Ecological Consultation Workspace</h4>
+            <p style='margin: 0; color: #94a3b8; font-size: 0.88rem; line-height: 1.5;'>
                 Describe your land, soil health, rainfall, or farming conditions. The autonomous scientist will reason across causal dimensions or ask clarifying questions if data is missing.
             </p>
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("<div style='font-size: 0.8rem; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 8px;'>OR LAUNCH A BENCHMARK SCENARIO:</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.76rem; font-weight: 700; color: #64748b; letter-spacing: 0.6px; margin-bottom: 6px;'>OR LAUNCH A BENCHMARK SCENARIO:</div>", unsafe_allow_html=True)
         col_st1, col_st2 = st.columns(2)
         with col_st1:
             if st.button("🌾 Semi-Arid Monoculture Wheat\n(SOC: 0.3%, Low Rain)", key="hero_st_1", use_container_width=True):
@@ -406,7 +476,7 @@ with tab_chat:
                                 "📊 Show quantitative validation from the FAO RECSOIL report"
                             ]
 
-                        st.markdown("<div style='margin-top: 16px; margin-bottom: 6px; font-size: 0.78rem; font-weight: 700; color: #34d399; letter-spacing: 0.8px;'>💡 SUGGESTED FOLLOW-UP INQUIRIES:</div>", unsafe_allow_html=True)
+                        st.markdown("<div style='margin-top: 14px; margin-bottom: 5px; font-size: 0.74rem; font-weight: 700; color: #34d399; letter-spacing: 0.7px;'>💡 SUGGESTED FOLLOW-UP INQUIRIES:</div>", unsafe_allow_html=True)
                         col_fu1, col_fu2, col_fu3 = st.columns(3)
                         with col_fu1:
                             if st.button(follow_ups[0], key=f"fu_btn_0_{msg_idx}", use_container_width=True):
@@ -430,10 +500,10 @@ with tab_chat:
 
     if user_prompt:
         # Dynamically label session title from first user query
-        if active_session["title"] in ["New Consultation", "Biodiversity is declining on..."] and len(chat_history) == 0:
+        if active_session["title"] in ["New Consultation", "Ecological Diagnosis", "Biodiversity Inquiry"] and len(chat_history) == 0:
             clean_title = user_prompt.replace("Soil organic carbon:", "SOC:").split(",")[0].strip()
-            if len(clean_title) > 28:
-                clean_title = clean_title[:28] + "..."
+            if len(clean_title) > 26:
+                clean_title = clean_title[:26] + "..."
             active_session["title"] = clean_title
 
         with st.chat_message("user"):
