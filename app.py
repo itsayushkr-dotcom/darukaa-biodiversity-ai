@@ -34,10 +34,28 @@ st.markdown("""
         background-color: #07130e !important;
         color: #e2e8f0 !important;
     }
-    .main .block-container {
-        padding-top: 1.6rem;
-        padding-bottom: 2.2rem;
+    /* Eliminate Awkward Empty Gap Above Header */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        height: 2rem !important;
+        z-index: 1;
+    }
+    .main .block-container,
+    div[data-testid="stMainBlockContainer"],
+    div.block-container {
+        padding-top: 1.2rem !important;
+        padding-bottom: 2rem !important;
         max-width: 1180px;
+    }
+    section[data-testid="stSidebar"] .block-container,
+    section[data-testid="stSidebar"] [data-testid="stSidebarBlockContainer"] {
+        padding-top: 1.2rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    [data-testid="stSidebarHeader"] {
+        padding-top: 0.4rem !important;
+        padding-bottom: 0 !important;
+        height: auto !important;
     }
     
     /* Clean Sidebar */
@@ -49,25 +67,31 @@ st.markdown("""
         color: #cbd5e1 !important;
     }
 
-    /* Minimalist, Calm Title */
+    /* Minimalist, Clean Header Alignment */
+    .header-box {
+        margin-top: 0;
+        margin-bottom: 0.95rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
     .main-title {
-        font-size: 1.85rem;
+        font-size: 1.55rem;
         font-weight: 700;
         color: #f8fafc;
-        margin-bottom: 0.15rem;
-        letter-spacing: -0.4px;
-        display: inline-block;
+        margin: 0;
+        letter-spacing: -0.3px;
+        line-height: 1.25;
     }
     .main-title-sub {
-        font-size: 1.25rem;
+        font-size: 1.12rem;
         font-weight: 400;
         color: #6ee7b7;
     }
     .sub-title {
-        font-size: 0.95rem;
+        font-size: 0.86rem;
         color: #94a3b8 !important;
         font-weight: 400;
-        margin-bottom: 1.1rem;
+        margin: 3px 0 0 0;
         letter-spacing: 0.1px;
     }
     
@@ -341,8 +365,20 @@ with st.sidebar:
 # ----------------------------------------------------
 # Main Header (Minimalist, Calm Typography)
 # ----------------------------------------------------
-st.markdown("<div class='main-title'>🌿 Darukaa.Earth <span class='main-title-sub'>| AI Biodiversity Intelligence</span></div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>", unsafe_allow_html=True)
+st.markdown("""
+<div class='header-box'>
+    <div style='display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;'>
+        <div>
+            <div class='main-title'>🌿 Darukaa.Earth <span class='main-title-sub'>| AI Biodiversity Intelligence</span></div>
+            <div class='sub-title'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>
+        </div>
+        <div style='display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.22); padding: 3px 10px; border-radius: 9999px; font-size: 0.74rem; color: #6ee7b7;'>
+            <span style='width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;'></span>
+            <span>Active Environmental Engine</span>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 
 # ----------------------------------------------------
