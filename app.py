@@ -7,6 +7,7 @@ Multi-Metric Causal Reasoning, RAG Knowledge Retrieval, and Geo-Spatial Context.
 import os
 import sys
 import json
+import time
 import streamlit as st
 import pandas as pd
 
@@ -25,94 +26,130 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling for Vibrant High-Contrast Scientific Aesthetic
+# Custom Styling for Minimalist, Ultra-Clean Forest Emerald Aesthetic
 st.markdown("""
 <style>
-    /* Vibrant Gradient High-Contrast Title */
+    /* Global Clean Font & Background Accents */
+    .main .block-container {
+        padding-top: 1.8rem;
+        padding-bottom: 2.5rem;
+        max-width: 1200px;
+    }
+    
+    /* Vibrant Gradient Minimalist Title */
     .main-title {
-        font-size: 2.3rem;
+        font-size: 2.1rem;
         font-weight: 800;
         background: linear-gradient(135deg, #00f2fe 0%, #4facfe 35%, #43e97b 75%, #38ef7d 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.15rem;
         letter-spacing: -0.5px;
         display: inline-block;
     }
     .sub-title {
-        font-size: 1.05rem;
-        color: #e2e8f0 !important;
+        font-size: 0.98rem;
+        color: #94a3b8 !important;
         font-weight: 400;
-        margin-bottom: 1.5rem;
-        opacity: 0.92;
-    }
-    .card-box {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-left: 4px solid #00f2fe;
-        padding: 1.2rem;
-        border-radius: 8px;
         margin-bottom: 1.2rem;
+        letter-spacing: 0.1px;
     }
+    
+    /* Minimalist Glass Cards */
+    .card-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-left: 3px solid #10b981;
+        padding: 1rem 1.2rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Citation & Metric Badges */
     .citation-badge {
-        background-color: rgba(56, 189, 248, 0.22) !important;
+        background-color: rgba(56, 189, 248, 0.15) !important;
         color: #38bdf8 !important;
-        border: 1px solid rgba(56, 189, 248, 0.45) !important;
-        font-size: 0.85rem;
+        border: 1px solid rgba(56, 189, 248, 0.35) !important;
+        font-size: 0.82rem;
         font-weight: 500;
-        padding: 4px 10px;
+        padding: 3px 9px;
         border-radius: 6px;
         display: inline-block;
-        margin-top: 4px;
-        margin-right: 6px;
+        margin-top: 3px;
+        margin-right: 5px;
         text-decoration: none !important;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
     }
     .citation-badge:hover {
-        background-color: rgba(56, 189, 248, 0.45) !important;
+        background-color: rgba(56, 189, 248, 0.35) !important;
         color: #ffffff !important;
         border-color: #38bdf8 !important;
         transform: translateY(-1px);
-        box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+        box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
     }
     .metric-badge {
-        background-color: rgba(52, 211, 153, 0.22) !important;
+        background-color: rgba(52, 211, 153, 0.18) !important;
         color: #34d399 !important;
-        border: 1px solid rgba(52, 211, 153, 0.45);
+        border: 1px solid rgba(52, 211, 153, 0.35);
         font-weight: 600;
-        font-size: 0.88rem;
-        padding: 4px 10px;
-        border-radius: 6px;
+        font-size: 0.85rem;
+        padding: 3px 8px;
+        border-radius: 5px;
         display: inline-block;
-        margin: 3px 0;
+        margin: 2px 0;
     }
     .variable-pill {
-        background-color: rgba(168, 85, 247, 0.22) !important;
+        background-color: rgba(168, 85, 247, 0.18) !important;
         color: #d8b4fe !important;
-        border: 1px solid rgba(168, 85, 247, 0.45);
+        border: 1px solid rgba(168, 85, 247, 0.35);
         font-weight: 500;
-        font-size: 0.82rem;
-        padding: 3px 9px;
-        border-radius: 6px;
+        font-size: 0.8rem;
+        padding: 2px 8px;
+        border-radius: 5px;
         display: inline-block;
         margin: 2px 4px 2px 0;
     }
     .confidence-badge-high {
-        background-color: rgba(34, 197, 94, 0.22) !important;
+        background-color: rgba(34, 197, 94, 0.18) !important;
         color: #4ade80 !important;
-        border: 1px solid rgba(34, 197, 94, 0.5);
+        border: 1px solid rgba(34, 197, 94, 0.4);
         font-weight: 700;
-        font-size: 0.85rem;
-        padding: 4px 10px;
-        border-radius: 6px;
+        font-size: 0.82rem;
+        padding: 3px 8px;
+        border-radius: 5px;
         display: inline-block;
+    }
+    
+    /* Clean Tab Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 4px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.92rem;
+        color: #94a3b8;
+    }
+    .stTabs [aria-selected="true"] {
+        color: #34d399 !important;
+        border-bottom: 2px solid #34d399 !important;
+        background: rgba(16, 185, 129, 0.08);
+    }
+    
+    /* History & Suggestion Buttons */
+    .stButton button {
+        border-radius: 8px;
+        transition: all 0.15s ease-in-out;
     }
 </style>
 """, unsafe_allow_html=True)
 
 
-# Initialize Session State
+# Initialize Core Resources
 @st.cache_resource
 def get_vector_store():
     return EnvironmentalVectorStore()
@@ -124,77 +161,165 @@ def get_geo_resolver():
 vector_store = get_vector_store()
 geo_resolver = get_geo_resolver()
 
-if "agent" not in st.session_state:
-    st.session_state.agent = BiodiversityIntelligenceAgent(vector_store=vector_store)
 
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
+# ----------------------------------------------------
+# Multi-Session Consultation History State Management
+# ----------------------------------------------------
+if "consultations" not in st.session_state:
+    initial_id = "session_default"
+    st.session_state.consultations = {
+        initial_id: {
+            "title": "Biodiversity is declining on...",
+            "chat_history": [],
+            "agent": BiodiversityIntelligenceAgent(vector_store=vector_store)
+        }
+    }
+    st.session_state.active_session_id = initial_id
+
+# Safety check for active session key
+if st.session_state.active_session_id not in st.session_state.consultations:
+    st.session_state.active_session_id = list(st.session_state.consultations.keys())[0]
+
+active_session = st.session_state.consultations[st.session_state.active_session_id]
+agent = active_session["agent"]
+chat_history = active_session["chat_history"]
+
+# Backward compatibility bindings
+st.session_state.agent = agent
+st.session_state.chat_history = chat_history
 
 
-# Sidebar Controls
+# ----------------------------------------------------
+# Sidebar: Brand, New Consultation, & History List
+# ----------------------------------------------------
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/natural-food.png", width=64)
-    st.title("Darukaa.Earth")
-    st.caption("AI Environmental Scientist System")
-    st.markdown("---")
+    # Sleek Brand Header matching ChatGPT/Claude aesthetic
+    st.markdown("""
+    <div style='display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem; padding: 4px 0;'>
+        <div style='background: linear-gradient(135deg, #059669 0%, #10b981 100%); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); flex-shrink: 0;'>
+            <span style='font-size: 1.5rem;'>🌿</span>
+        </div>
+        <div>
+            <div style='font-size: 1.25rem; font-weight: 800; color: #f8fafc; line-height: 1.15;'>Darukaa.Earth</div>
+            <div style='font-size: 0.76rem; color: #34d399; font-weight: 500; letter-spacing: 0.2px;'>AI Biodiversity Intelligence</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    # API Configuration
-    st.subheader("🔑 LLM Configuration")
-    api_key_input = st.text_input("Gemini API Key (Optional)", type="password", placeholder="AIzaSy...")
-    if api_key_input:
-        st.session_state.agent.gemini_api_key = api_key_input
-        st.success("Gemini API Key Linked")
-    else:
-        st.info("Operating in Autonomous Scientific Engine Mode (Offline Capable RAG)")
-
-    st.markdown("---")
-    st.subheader("🧪 Quick Load Benchmarks")
-
-    if st.button("📌 Example 1: Semi-Arid Monoculture"):
-        st.session_state.quick_query = "Soil organic carbon: 0.3%, Rainfall: low, Crop: monoculture wheat, Region: semi-arid"
-
-    if st.button("❓ Example 2: Incomplete Query"):
-        st.session_state.quick_query = "Biodiversity is declining on my land"
-
-    if st.button("🏜️ Example 3: Sodic Alkaline Soil"):
-        st.session_state.quick_query = "Soil pH: 8.9, ESP: 18%, Region: arid irrigated, Crop: monoculture cotton"
-
-    if st.button("🌊 Example 4: Agrochemical Pollution"):
-        st.session_state.quick_query = "Soil organic carbon: 0.4%, Rainfall: low, Crop: monoculture cotton, High chemical pesticide and fertilizer runoff"
-
-    st.markdown("---")
-    if st.button("🔄 Reset Conversation Memory"):
-        st.session_state.agent.reset_memory()
-        st.session_state.chat_history = []
+    # Prominent "+ New Consultation" Action
+    if st.button("➕ New Consultation", key="btn_new_consult", use_container_width=True, type="primary"):
+        new_id = f"session_{len(st.session_state.consultations) + 1}_{int(time.time())}"
+        st.session_state.consultations[new_id] = {
+            "title": "New Consultation",
+            "chat_history": [],
+            "agent": BiodiversityIntelligenceAgent(vector_store=vector_store)
+        }
+        st.session_state.active_session_id = new_id
         st.rerun()
 
-    st.markdown("---")
-    st.caption(f"Knowledge Base: **{len(vector_store.documents)}** peer-reviewed documents indexed")
-    st.caption("Indexed Sources: FAO, IPCC, IPBES, ICAR")
+    # Section: CONSULTATION HISTORY
+    st.markdown("""
+    <div style='margin-top: 1.4rem; margin-bottom: 0.5rem; font-size: 0.72rem; font-weight: 700; color: #6ee7b7; letter-spacing: 1px;'>
+        CONSULTATION HISTORY
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Render History List with Active Highlighting
+    for s_id, s_data in list(st.session_state.consultations.items()):
+        is_active = (s_id == st.session_state.active_session_id)
+        btn_label = f"💬 {s_data['title']}"
+        btn_type = "primary" if is_active else "secondary"
+        if st.button(btn_label, key=f"session_btn_{s_id}", use_container_width=True, type=btn_type):
+            st.session_state.active_session_id = s_id
+            st.rerun()
+
+    st.markdown("<div style='margin: 1.2rem 0; border-top: 1px solid rgba(255,255,255,0.08);'></div>", unsafe_allow_html=True)
+
+    # Compact Collapsible Benchmark Presets
+    with st.expander("🧪 Benchmark Presets", expanded=False):
+        if st.button("📌 1. Semi-Arid Monoculture", key="pre_1", use_container_width=True):
+            st.session_state.pending_prompt = "Soil organic carbon: 0.3%, Rainfall: low, Crop: monoculture wheat, Region: semi-arid"
+            st.rerun()
+        if st.button("❓ 2. Incomplete Query", key="pre_2", use_container_width=True):
+            st.session_state.pending_prompt = "Biodiversity is declining on my land"
+            st.rerun()
+        if st.button("🏜️ 3. Sodic Alkaline Soil", key="pre_3", use_container_width=True):
+            st.session_state.pending_prompt = "Soil pH: 8.9, ESP: 18%, Region: arid irrigated, Crop: monoculture cotton"
+            st.rerun()
+        if st.button("🌊 4. Agrochemical Runoff", key="pre_4", use_container_width=True):
+            st.session_state.pending_prompt = "Soil organic carbon: 0.4%, Rainfall: low, Crop: monoculture cotton, High chemical pesticide and fertilizer runoff"
+            st.rerun()
+
+    # Compact Collapsible Settings
+    with st.expander("⚙️ Settings & API Key", expanded=False):
+        api_key_input = st.text_input("Gemini API Key (Optional)", type="password", placeholder="AIzaSy...", value=agent.gemini_api_key or "")
+        if api_key_input:
+            agent.gemini_api_key = api_key_input
+            st.success("API Key Linked")
+        else:
+            st.caption("Autonomous Scientific Engine Mode (Offline Capable RAG)")
+        
+        st.markdown("<div style='margin-top: 8px;'></div>", unsafe_allow_html=True)
+        if st.button("🔄 Reset Current Chat", key="btn_reset_active", use_container_width=True):
+            active_session["chat_history"] = []
+            active_session["agent"].reset_memory()
+            st.rerun()
+
+    st.caption(f"📚 {len(vector_store.documents)} peer-reviewed documents indexed (FAO, IPCC, IPBES, ICAR)")
 
 
-# Header
+# ----------------------------------------------------
+# Main Header
+# ----------------------------------------------------
 st.markdown("<div class='main-title'>🌿 Darukaa.Earth — AI Biodiversity Intelligence</div>", unsafe_allow_html=True)
 st.markdown("<div class='sub-title'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>", unsafe_allow_html=True)
 
-# Tabs
+
+# ----------------------------------------------------
+# Minimalist, Non-Congested Clean Tabs
+# ----------------------------------------------------
 tab_chat, tab_structured, tab_visualizer, tab_kb = st.tabs([
-    "💬 Conversational Scientist (Chat)",
-    "📋 Structured Input & Geo-Spatial (JSON/Form)",
-    "📊 Multi-Metric Impact Radar",
-    "📚 Scientific Knowledge Layer (RAG Inspector)"
+    "💬 Chat",
+    "📋 Form & GPS",
+    "📊 Impact Radar",
+    "📚 Knowledge Base"
 ])
 
 
 # ----------------------------------------------------
-# TAB 1: Conversational Scientist (Chat)
+# TAB 1: Chat (Multi-Turn Dialogue & Follow-Ups)
 # ----------------------------------------------------
 with tab_chat:
-    st.markdown("#### Multi-Turn Ecological Dialogue with Missing-Parameter Detection")
-    st.caption("Ask free-form questions. If variables are missing (< 3 environmental dimensions), the scientist will ask clarifying questions.")
+    # Empty State: Starter Prompt Cards
+    if len(chat_history) == 0:
+        st.markdown("""
+        <div style='background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.18); border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;'>
+            <h4 style='margin: 0 0 0.4rem 0; color: #34d399; font-size: 1.15rem;'>🌿 Welcome to your Ecological Consultation</h4>
+            <p style='margin: 0; color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;'>
+                Describe your land, soil health, rainfall, or farming conditions. The autonomous scientist will reason across causal dimensions or ask clarifying questions if data is missing.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Display chat history
-    for msg_idx, msg in enumerate(st.session_state.chat_history):
+        st.markdown("<div style='font-size: 0.8rem; font-weight: 700; color: #94a3b8; letter-spacing: 0.5px; margin-bottom: 8px;'>OR LAUNCH A BENCHMARK SCENARIO:</div>", unsafe_allow_html=True)
+        col_st1, col_st2 = st.columns(2)
+        with col_st1:
+            if st.button("🌾 Semi-Arid Monoculture Wheat\n(SOC: 0.3%, Low Rain)", key="hero_st_1", use_container_width=True):
+                st.session_state.pending_prompt = "Soil organic carbon: 0.3%, Rainfall: low, Crop: monoculture wheat, Region: semi-arid"
+                st.rerun()
+            if st.button("🏜️ Sodic Alkaline Soil Reclamation\n(pH: 8.9, ESP: 18%, Arid)", key="hero_st_2", use_container_width=True):
+                st.session_state.pending_prompt = "Soil pH: 8.9, ESP: 18%, Region: arid irrigated, Crop: monoculture cotton"
+                st.rerun()
+        with col_st2:
+            if st.button("❓ Incomplete Query (Test Clarifying Engine)\n'Biodiversity is declining on my land'", key="hero_st_3", use_container_width=True):
+                st.session_state.pending_prompt = "Biodiversity is declining on my land"
+                st.rerun()
+            if st.button("🌊 Agrochemical Runoff & Ecosystem Shock\n(Chemical Runoff, SOC 0.4%)", key="hero_st_4", use_container_width=True):
+                st.session_state.pending_prompt = "Soil organic carbon: 0.4%, Rainfall: low, Crop: monoculture cotton, High chemical pesticide and fertilizer runoff"
+                st.rerun()
+
+    # Render Conversation Messages
+    for msg_idx, msg in enumerate(chat_history):
         with st.chat_message(msg["role"]):
             if msg["role"] == "user":
                 st.write(msg["content"])
@@ -243,7 +368,7 @@ with tab_chat:
                                         citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='{tip}'>📖 {c.source} ({c.year}) ↗</a> "
                                     st.markdown(citations_html, unsafe_allow_html=True)
 
-                                with st.expander(f"🔬 Evidence Verification: Exact Sections & Quotes for Intervention #{idx}", expanded=False):
+                                with st.expander(f"🔬 Evidence Verification: Exact Sections & Quotes for #{idx}", expanded=False):
                                     for c in it.scientific_citations:
                                         sec = getattr(c, 'section_or_page', None)
                                         quote = getattr(c, 'exact_quote_or_finding', None)
@@ -265,27 +390,70 @@ with tab_chat:
                             mime="application/json",
                             key=f"dl_btn_turn_{msg_idx}"
                         )
+                    
+                    # Dynamic Follow-up Suggestive Questions (Displayed on latest turn)
+                    if msg_idx == len(chat_history) - 1:
+                        if resp.status == "NEEDS_CLARIFICATION":
+                            follow_ups = [
+                                "🌾 Rainfall: 350mm semi-arid, SOC: 0.35%, monoculture wheat",
+                                "🏜️ Soil pH: 8.9, ESP: 18%, cotton with flood irrigation",
+                                "🌊 Annual rain 420mm, high agrochemical runoff"
+                            ]
+                        else:
+                            follow_ups = [
+                                "💰 What are implementation costs & transition risks in Year 1?",
+                                "💧 How will this sequence interact with winter moisture deficits?",
+                                "📊 Show quantitative validation from the FAO RECSOIL report"
+                            ]
+
+                        st.markdown("<div style='margin-top: 16px; margin-bottom: 6px; font-size: 0.78rem; font-weight: 700; color: #34d399; letter-spacing: 0.8px;'>💡 SUGGESTED FOLLOW-UP INQUIRIES:</div>", unsafe_allow_html=True)
+                        col_fu1, col_fu2, col_fu3 = st.columns(3)
+                        with col_fu1:
+                            if st.button(follow_ups[0], key=f"fu_btn_0_{msg_idx}", use_container_width=True):
+                                st.session_state.pending_prompt = follow_ups[0]
+                                st.rerun()
+                        with col_fu2:
+                            if st.button(follow_ups[1], key=f"fu_btn_1_{msg_idx}", use_container_width=True):
+                                st.session_state.pending_prompt = follow_ups[1]
+                                st.rerun()
+                        with col_fu3:
+                            if st.button(follow_ups[2], key=f"fu_btn_2_{msg_idx}", use_container_width=True):
+                                st.session_state.pending_prompt = follow_ups[2]
+                                st.rerun()
                 else:
                     st.write(msg["content"])
 
-    # Chat Input Box
-    default_prompt = st.session_state.pop("quick_query", "")
-    user_prompt = st.chat_input("Describe your land, soil conditions, rainfall, or crop monoculture...") or default_prompt
+    # Chat Input Box & Submission Handler
+    pending_text = st.session_state.pop("pending_prompt", None)
+    chat_input_val = st.chat_input("Ask about soil restoration, causal chains, or crop rotation...")
+    user_prompt = chat_input_val or pending_text
 
     if user_prompt:
+        # Dynamically label session title from first user query
+        if active_session["title"] in ["New Consultation", "Biodiversity is declining on..."] and len(chat_history) == 0:
+            clean_title = user_prompt.replace("Soil organic carbon:", "SOC:").split(",")[0].strip()
+            if len(clean_title) > 28:
+                clean_title = clean_title[:28] + "..."
+            active_session["title"] = clean_title
+
         with st.chat_message("user"):
             st.write(user_prompt)
 
-        response = st.session_state.agent.chat(user_prompt)
+        with st.spinner("Analyzing multi-variable causal interactions & scientific literature..."):
+            response = agent.chat(user_prompt)
 
-        st.session_state.chat_history.append({"role": "user", "content": user_prompt})
-        st.session_state.chat_history.append({"role": "assistant", "content": response.overall_scientific_summary or "", "response_obj": response})
+        chat_history.append({"role": "user", "content": user_prompt})
+        chat_history.append({
+            "role": "assistant",
+            "content": response.overall_scientific_summary or "",
+            "response_obj": response
+        })
 
         st.rerun()
 
 
 # ----------------------------------------------------
-# TAB 2: Structured Input & Geo-Spatial (JSON/Form)
+# TAB 2: Form & GPS (Structured Inputs & Spatial API)
 # ----------------------------------------------------
 with tab_structured:
     st.markdown("#### Structured Environmental Form & Geo-Spatial Auto-Resolution")
@@ -341,7 +509,7 @@ with tab_structured:
     if st.button("🚀 Evaluate Structured Multi-Metric Recommendation", type="primary"):
         with st.spinner("Executing RAG retrieval and multi-variable causal reasoning..."):
             query_str = f"Crop: {crop_input}, SOC: {soc_input}%, Rainfall: {rainfall_input}"
-            res = st.session_state.agent.chat(
+            res = agent.chat(
                 user_message=query_str,
                 structured_input=structured_payload
             )
@@ -373,7 +541,7 @@ with tab_structured:
                         citations_html += f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' class='citation-badge' title='{tip}'>📖 {c.source} ({c.year}) ↗</a> "
                     st.markdown(citations_html, unsafe_allow_html=True)
 
-                with st.expander(f"🔬 Evidence Verification: Exact Sections & Quotes for Intervention #{idx}", expanded=False):
+                with st.expander(f"🔬 Evidence Verification: Exact Sections & Quotes for #{idx}", expanded=False):
                     for c in it.scientific_citations:
                         sec = getattr(c, 'section_or_page', None)
                         quote = getattr(c, 'exact_quote_or_finding', None)
@@ -390,7 +558,7 @@ with tab_structured:
 
 
 # ----------------------------------------------------
-# TAB 3: Multi-Metric Impact Radar
+# TAB 3: Impact Radar (Quantitative Visualizer)
 # ----------------------------------------------------
 with tab_visualizer:
     st.markdown("#### Multi-Metric Ecological Projection (Baseline vs. Post-Intervention)")
@@ -420,7 +588,7 @@ with tab_visualizer:
 
 
 # ----------------------------------------------------
-# TAB 4: Scientific Knowledge Layer (RAG Inspector)
+# TAB 4: Knowledge Base (RAG Inspector)
 # ----------------------------------------------------
 with tab_kb:
     st.markdown("#### Scientific Knowledge Base & RAG Retrieval Inspector")
@@ -433,7 +601,7 @@ with tab_kb:
         st.write(f"Retrieved **{len(matches)}** peer-reviewed records matching query:")
 
         for m in matches:
-            with st.expander(f"📖 {m['title']} — {m['source']} ({m['publication_year']}) [Relevance Score: {m['relevance_score']}]"):
+            with st.expander(f"📖 {m['title']} — {m['source']} ({m['publication_year']}) [Relevance: {m['relevance_score']}]"):
                 st.markdown(f"**Domain:** `{m['domain']}`")
                 st.markdown(f"**Coupled Environmental Variables:** `{', '.join(m['environmental_variables'])}`")
                 st.markdown(f"**Scientific Mechanism:**\n{m['scientific_mechanism']}")
