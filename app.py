@@ -34,26 +34,26 @@ st.markdown("""
         background-color: #07130e !important;
         color: #e2e8f0 !important;
     }
-    /* Eliminate Awkward Empty Gap Above Header */
+    /* Clean, Balanced Container Clearance (No Overlap with Streamlit Controls) */
     header[data-testid="stHeader"] {
         background: transparent !important;
-        height: 2rem !important;
-        z-index: 1;
+        height: 2.5rem !important;
+        z-index: 10;
     }
     .main .block-container,
     div[data-testid="stMainBlockContainer"],
     div.block-container {
-        padding-top: 1.2rem !important;
-        padding-bottom: 2rem !important;
-        max-width: 1180px;
+        padding-top: 2.1rem !important;
+        padding-bottom: 2.5rem !important;
+        max-width: 1200px;
     }
     section[data-testid="stSidebar"] .block-container,
     section[data-testid="stSidebar"] [data-testid="stSidebarBlockContainer"] {
-        padding-top: 1.2rem !important;
+        padding-top: 1.8rem !important;
         padding-bottom: 1.5rem !important;
     }
     [data-testid="stSidebarHeader"] {
-        padding-top: 0.4rem !important;
+        padding-top: 0.5rem !important;
         padding-bottom: 0 !important;
         height: auto !important;
     }
@@ -67,32 +67,60 @@ st.markdown("""
         color: #cbd5e1 !important;
     }
 
-    /* Minimalist, Clean Header Alignment */
+    /* Hero Heading & Balanced Alignment */
     .header-box {
-        margin-top: 0;
-        margin-bottom: 0.95rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        margin-top: 0.1rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .main-title {
-        font-size: 1.55rem;
-        font-weight: 700;
-        color: #f8fafc;
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: #ffffff;
         margin: 0;
-        letter-spacing: -0.3px;
-        line-height: 1.25;
+        letter-spacing: -0.6px;
+        line-height: 1.2;
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
     }
     .main-title-sub {
-        font-size: 1.12rem;
-        font-weight: 400;
-        color: #6ee7b7;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #34d399;
+        letter-spacing: -0.2px;
     }
     .sub-title {
-        font-size: 0.86rem;
+        font-size: 0.98rem;
         color: #94a3b8 !important;
         font-weight: 400;
-        margin: 3px 0 0 0;
+        margin: 6px 0 0 0;
         letter-spacing: 0.1px;
+        line-height: 1.45;
+    }
+    .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(16, 185, 129, 0.09);
+        border: 1px solid rgba(16, 185, 129, 0.28);
+        padding: 5px 13px;
+        border-radius: 9999px;
+        font-size: 0.77rem;
+        color: #6ee7b7;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        margin-top: 4px;
+    }
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        background: #10b981;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+        display: inline-block;
     }
     
     /* Minimalist Forest Cards */
@@ -367,14 +395,17 @@ with st.sidebar:
 # ----------------------------------------------------
 st.markdown("""
 <div class='header-box'>
-    <div style='display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px;'>
+    <div style='display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;'>
         <div>
-            <div class='main-title'>🌿 Darukaa.Earth <span class='main-title-sub'>| AI Biodiversity Intelligence</span></div>
+            <div class='main-title'>
+                <span>🌿 Darukaa.Earth</span>
+                <span class='main-title-sub'><span style='color: rgba(255,255,255,0.22); font-weight: 300; margin: 0 4px;'>|</span> AI Biodiversity Intelligence</span>
+            </div>
             <div class='sub-title'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>
         </div>
-        <div style='display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.22); padding: 3px 10px; border-radius: 9999px; font-size: 0.74rem; color: #6ee7b7;'>
-            <span style='width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;'></span>
-            <span>Active Environmental Engine</span>
+        <div class='status-pill'>
+            <span class='status-dot'></span>
+            <span>Autonomous Engine Active</span>
         </div>
     </div>
 </div>
