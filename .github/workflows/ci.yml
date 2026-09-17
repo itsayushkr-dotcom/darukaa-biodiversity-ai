@@ -46,10 +46,11 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: Production
-      url: https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/
+      url: https://darukaa-earth.streamlit.app/
     steps:
       - name: Confirm Streamlit Live Status
         run: |
           echo "Streamlit Community Cloud is actively serving Darukaa.Earth"
-          echo "Live Production URL: https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/"
+          echo "Live Production URL: https://darukaa-earth.streamlit.app/"
+
 

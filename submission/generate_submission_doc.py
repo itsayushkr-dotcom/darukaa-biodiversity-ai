@@ -30,7 +30,7 @@ def create_submission_document(output_path: str):
     p.add_run("• GitHub Repository: ").bold = True
     p.add_run("https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai\n")
     p.add_run("• Live Deployed Web Application: ").bold = True
-    p.add_run("https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/\n")
+    p.add_run("https://darukaa-earth.streamlit.app/\n")
     p.add_run("• Local Workbench URL: ").bold = True
     p.add_run("http://localhost:8501 (via python -m streamlit run app.py)\n")
     p.add_run("• REST API Documentation URL: ").bold = True

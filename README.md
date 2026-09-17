@@ -2,13 +2,13 @@
 
 > **An autonomous AI Environmental Scientist that combines deep scientific reasoning, structured environmental knowledge retrieval (RAG), and multi-metric causal analysis to generate evidence-backed biodiversity restoration interventions.**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://darukaa-earth.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688.svg)](https://fastapi.tiangolo.com)
 [![Tests Passing](https://img.shields.io/badge/tests-9%20passed%2C%20100%25-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> 🚀 **Live Deployed Application:** [https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/](https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/)  
+> 🚀 **Live Deployed Application:** [https://darukaa-earth.streamlit.app/](https://darukaa-earth.streamlit.app/)  
 > 📄 **Official Submission Dossier:** [`submission/Darukaa_Earth_Submission_Dossier.docx`](file:///submission/Darukaa_Earth_Submission_Dossier.docx)
 
 ---
@@ -205,7 +205,7 @@ OK (100% Passed)
 ## 8. Submission Deliverables & Reviewer Access
 
 ### 1. Live Deployed Web Application
-👉 **URL:** [https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/](https://darukaa-biodiversity-ai-ppf4tx9gdwrupkyfm2itcy.streamlit.app/)
+👉 **URL:** [https://darukaa-earth.streamlit.app/](https://darukaa-earth.streamlit.app/)
 
 ### 2. Generated Word Submission Document (.docx):
 A complete `.docx` file has been generated at:
