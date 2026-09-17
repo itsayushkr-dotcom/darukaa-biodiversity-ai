@@ -34,22 +34,22 @@ st.markdown("""
         background-color: #07130e !important;
         color: #e2e8f0 !important;
     }
-    /* Clean, Balanced Viewport Clearance */
+    /* Clean, Balanced Container Clearance (No Overlap with Streamlit Controls) */
     header[data-testid="stHeader"] {
         background: transparent !important;
-        height: 2rem !important;
+        height: 2.5rem !important;
         z-index: 10;
     }
     .main .block-container,
     div[data-testid="stMainBlockContainer"],
     div.block-container {
-        padding-top: 1.4rem !important;
-        padding-bottom: 2rem !important;
-        max-width: 1160px;
+        padding-top: 2.1rem !important;
+        padding-bottom: 2.5rem !important;
+        max-width: 1200px;
     }
     section[data-testid="stSidebar"] .block-container,
     section[data-testid="stSidebar"] [data-testid="stSidebarBlockContainer"] {
-        padding-top: 1.4rem !important;
+        padding-top: 1.8rem !important;
         padding-bottom: 1.5rem !important;
     }
     [data-testid="stSidebarHeader"] {
@@ -67,138 +67,60 @@ st.markdown("""
         color: #cbd5e1 !important;
     }
 
-    /* Modern AI Consultation Dashboard Header */
-    .dashboard-header {
-        margin-top: 0;
-        margin-bottom: 0.85rem;
-        padding-bottom: 0.65rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    /* Hero Heading & Balanced Alignment */
+    .header-box {
+        margin-top: 0.1rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .header-top-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.2rem;
-    }
-    .brand-logo {
-        font-size: 1.95rem;
-        font-weight: 900;
-        letter-spacing: 0.5px;
+    .main-title {
+        font-size: 2.25rem;
+        font-weight: 800;
         color: #ffffff;
-        font-family: system-ui, -apple-system, sans-serif;
+        margin: 0;
+        letter-spacing: -0.6px;
+        line-height: 1.2;
         display: flex;
-        align-items: center;
+        align-items: baseline;
+        flex-wrap: wrap;
         gap: 8px;
     }
-    .status-pill-active {
+    .main-title-sub {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #34d399;
+        letter-spacing: -0.2px;
+    }
+    .sub-title {
+        font-size: 0.98rem;
+        color: #94a3b8 !important;
+        font-weight: 400;
+        margin: 6px 0 0 0;
+        letter-spacing: 0.1px;
+        line-height: 1.45;
+    }
+    .status-pill {
         display: inline-flex;
         align-items: center;
         gap: 7px;
-        background: rgba(16, 185, 129, 0.1);
-        border: 1px solid rgba(16, 185, 129, 0.35);
-        padding: 4px 12px;
+        background: rgba(16, 185, 129, 0.09);
+        border: 1px solid rgba(16, 185, 129, 0.28);
+        padding: 5px 13px;
         border-radius: 9999px;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        color: #34d399;
+        font-size: 0.77rem;
+        color: #6ee7b7;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        margin-top: 4px;
     }
-    .status-dot-active {
+    .status-dot {
         width: 7px;
         height: 7px;
         background: #10b981;
         border-radius: 50%;
-        box-shadow: 0 0 10px #10b981;
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
         display: inline-block;
-    }
-    .brand-tagline {
-        font-size: 1.15rem;
-        font-weight: 600;
-        color: #34d399;
-        margin-top: 1px;
-        letter-spacing: -0.2px;
-    }
-    .brand-subtext {
-        font-size: 0.9rem;
-        color: #94a3b8;
-        margin-top: 2px;
-        letter-spacing: 0.1px;
-    }
-
-    /* Consultation Console Card */
-    .console-card {
-        background: #091c14;
-        border: 1px solid rgba(16, 185, 129, 0.25);
-        border-radius: 12px;
-        padding: 1.15rem 1.25rem 0.5rem 1.25rem;
-        margin-bottom: 0.75rem;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-    }
-    .console-title {
-        font-size: 1.22rem;
-        font-weight: 700;
-        color: #f8fafc;
-        margin-bottom: 0.15rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .console-subtitle {
-        font-size: 0.88rem;
-        color: #94a3b8;
-        margin-bottom: 0.65rem;
-    }
-    
-    /* Environmental Intelligence Ribbon */
-    .intel-ribbon {
-        margin-top: 1.4rem;
-        padding-top: 1.1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        text-align: center;
-    }
-    .intel-header {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 2.2px;
-        color: #34d399;
-        margin-bottom: 0.85rem;
-        text-transform: uppercase;
-    }
-    .intel-pills-row {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .intel-pillar-card {
-        background: #081a13;
-        border: 1px solid rgba(16, 185, 129, 0.16);
-        border-radius: 8px;
-        padding: 8px 14px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 125px;
-        transition: all 0.2s ease;
-    }
-    .intel-pillar-card:hover {
-        border-color: #10b981;
-        background: #0c251b;
-        transform: translateY(-2px);
-    }
-    .intel-pill-icon {
-        font-size: 1.2rem;
-        margin-bottom: 2px;
-    }
-    .intel-pill-name {
-        font-size: 0.86rem;
-        font-weight: 600;
-        color: #f8fafc;
-    }
-    .intel-pill-desc {
-        font-size: 0.66rem;
-        color: #64748b;
-        margin-top: 2px;
     }
     
     /* Minimalist Forest Cards */
@@ -469,21 +391,23 @@ with st.sidebar:
 
 
 # ----------------------------------------------------
-# Main Header (Minimalist, Intentional AI Dashboard)
+# Main Header (Minimalist, Calm Typography)
 # ----------------------------------------------------
 st.markdown("""
-<div class='dashboard-header'>
-    <div class='header-top-row'>
-        <div class='brand-logo'>
-            <span>🌿 DARUKAA.EARTH</span>
+<div class='header-box'>
+    <div style='display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;'>
+        <div>
+            <div class='main-title'>
+                <span>🌿 Darukaa.Earth</span>
+                <span class='main-title-sub'><span style='color: rgba(255,255,255,0.22); font-weight: 300; margin: 0 4px;'>|</span> AI Biodiversity Intelligence</span>
+            </div>
+            <div class='sub-title'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>
         </div>
-        <div class='status-pill-active'>
-            <span class='status-dot-active'></span>
-            <span>ENGINE ACTIVE</span>
+        <div class='status-pill'>
+            <span class='status-dot'></span>
+            <span>Autonomous Engine Active</span>
         </div>
     </div>
-    <div class='brand-tagline'>AI Biodiversity Intelligence</div>
-    <div class='brand-subtext'>Autonomous Environmental Scientist: Multi-Metric Causal Reasoning & Evidence-Backed Restoration</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -492,7 +416,7 @@ st.markdown("""
 # Minimalist, Non-Congested Clean Tabs
 # ----------------------------------------------------
 tab_chat, tab_structured, tab_visualizer, tab_kb = st.tabs([
-    "💬 Consultation",
+    "💬 Chat",
     "📋 Form & GPS",
     "📊 Impact Radar",
     "📚 Knowledge Base"
@@ -500,132 +424,35 @@ tab_chat, tab_structured, tab_visualizer, tab_kb = st.tabs([
 
 
 # ----------------------------------------------------
-# TAB 1: Consultation (Hero Console, Multi-Turn & Follow-Ups)
+# TAB 1: Chat (Multi-Turn Dialogue & Follow-Ups)
 # ----------------------------------------------------
 with tab_chat:
-    # Empty State: Intentional AI Consultation Dashboard
+    # Empty State: Starter Prompt Cards
     if len(chat_history) == 0:
         st.markdown("""
-        <div class='console-card'>
-            <div class='console-title'>🌱 What's happening on your land?</div>
-            <div class='console-subtitle'>Tell me about your soil, crops, rainfall, biodiversity...</div>
+        <div style='background: #081a13; border: 1px solid rgba(16, 185, 129, 0.15); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 1.1rem;'>
+            <h4 style='margin: 0 0 0.35rem 0; color: #34d399; font-size: 1.08rem; font-weight: 600;'>🌿 Ecological Consultation Workspace</h4>
+            <p style='margin: 0; color: #94a3b8; font-size: 0.88rem; line-height: 1.5;'>
+                Describe your land, soil health, rainfall, or farming conditions. The autonomous scientist will reason across causal dimensions or ask clarifying questions if data is missing.
+            </p>
         </div>
         """, unsafe_allow_html=True)
 
-        # Land query text area inside consultation console
-        card_query = st.text_area(
-            "Describe land conditions",
-            placeholder="Tell me about your soil, crops, rainfall, biodiversity...",
-            key="card_query_input",
-            label_visibility="collapsed",
-            height=85
-        )
-
-        # Action bar row: [ 📍 Use GPS ] [ 📄 Upload soil report ] [ 🎤 Speak ]   [ ↑ Consult ]
-        col_gps, col_soil, col_voice, col_space, col_submit = st.columns([1.25, 1.7, 1.15, 1.4, 1.2])
-        with col_gps:
-            if st.button("📍 Use GPS", key="btn_card_gps", use_container_width=True):
-                st.session_state.pending_prompt = "📍 Location: Semi-Arid Zone (26.91° N, 75.78° E). Soil: Sandy loam, low rainfall (380mm), high summer evapotranspiration. Formulate evidence-backed soil organic carbon restoration sequence."
-                st.rerun()
-        with col_soil:
-            if st.button("📄 Upload soil report", key="btn_card_soil", use_container_width=True):
-                st.session_state.show_soil_uploader = not st.session_state.get("show_soil_uploader", False)
-                st.rerun()
-        with col_voice:
-            if st.button("🎤 Speak", key="btn_card_voice", use_container_width=True):
-                st.session_state.pending_prompt = "🎤 Voice Transcription: 'Topsoil is eroding during unseasonal monsoon showers, soil organic carbon is depleted, and crop yields have dropped for 3 seasons.'"
-                st.rerun()
-        with col_submit:
-            if st.button("↑ Consult", key="btn_card_submit", type="primary", use_container_width=True):
-                if card_query.strip():
-                    st.session_state.pending_prompt = card_query.strip()
-                    st.rerun()
-                else:
-                    st.warning("Please describe your land conditions or choose a benchmark below.")
-
-        # Inline Soil Report Uploader Drawer
-        if st.session_state.get("show_soil_uploader", False):
-            with st.expander("📄 Soil Health Card & Lab Test Uploader", expanded=True):
-                uploaded_file = st.file_uploader("Upload Soil Lab Report (PDF, CSV, PNG)", type=["pdf", "csv", "png", "jpg"], key="card_soil_file")
-                col_u1, col_u2 = st.columns([2, 1])
-                with col_u1:
-                    if uploaded_file:
-                        st.success(f"Loaded: {uploaded_file.name}")
-                        if st.button("🚀 Analyze Uploaded Soil Data", key="btn_analyze_uploaded", type="primary"):
-                            st.session_state.pending_prompt = f"Soil Lab Report ({uploaded_file.name}): Soil pH 8.4, ESP 16%, SOC 0.38%, low nitrogen, deficient organic matter. Prescribe evidence-backed soil reclamation sequence."
-                            st.rerun()
-                with col_u2:
-                    if st.button("📋 Load Sample Lab Report", key="btn_load_sample_soil", use_container_width=True):
-                        st.session_state.pending_prompt = "Soil Lab Report: pH 8.6, ESP 18.2%, SOC 0.31%, Electrical Conductivity 4.2 dS/m, Low Available N, Moderate P, Semi-arid irrigated cotton."
-                        st.rerun()
-
-        # Benchmark Section
-        st.markdown("<div style='margin-top: 1.15rem; margin-bottom: 0.5rem; font-size: 0.88rem; font-weight: 600; color: #94a3b8;'>Try a benchmark</div>", unsafe_allow_html=True)
-        col_bm1, col_bm2, col_bm3, col_bm4 = st.columns(4)
-        with col_bm1:
-            if st.button("🌾 Semi-arid wheat", key="bm_wheat", use_container_width=True):
+        st.markdown("<div style='font-size: 0.76rem; font-weight: 700; color: #64748b; letter-spacing: 0.6px; margin-bottom: 6px;'>OR LAUNCH A BENCHMARK SCENARIO:</div>", unsafe_allow_html=True)
+        col_st1, col_st2 = st.columns(2)
+        with col_st1:
+            if st.button("🌾 Semi-Arid Monoculture Wheat\n(SOC: 0.3%, Low Rain)", key="hero_st_1", use_container_width=True):
                 st.session_state.pending_prompt = "Soil organic carbon: 0.3%, Rainfall: low, Crop: monoculture wheat, Region: semi-arid"
                 st.rerun()
-        with col_bm2:
-            if st.button("🧂 Sodic soil", key="bm_sodic", use_container_width=True):
+            if st.button("🏜️ Sodic Alkaline Soil Reclamation\n(pH: 8.9, ESP: 18%, Arid)", key="hero_st_2", use_container_width=True):
                 st.session_state.pending_prompt = "Soil pH: 8.9, ESP: 18%, Region: arid irrigated, Crop: monoculture cotton"
                 st.rerun()
-        with col_bm3:
-            if st.button("🧪 Agrochemical runoff", key="bm_runoff", use_container_width=True):
-                st.session_state.pending_prompt = "Soil organic carbon: 0.4%, Rainfall: low, Crop: monoculture cotton, High chemical pesticide and fertilizer runoff"
-                st.rerun()
-        with col_bm4:
-            if st.button("❓ Incomplete query", key="bm_incomplete", use_container_width=True):
+        with col_st2:
+            if st.button("❓ Incomplete Query (Test Clarifying Engine)\n'Biodiversity is declining on my land'", key="hero_st_3", use_container_width=True):
                 st.session_state.pending_prompt = "Biodiversity is declining on my land"
                 st.rerun()
-
-        # Environmental Intelligence Ribbon
-        st.markdown("""
-        <div class='intel-ribbon'>
-            <div class='intel-header'>ENVIRONMENTAL INTELLIGENCE</div>
-            <div class='intel-pills-row'>
-                <div class='intel-pillar-card'>
-                    <span class='intel-pill-icon'>🌱</span>
-                    <span class='intel-pill-name'>Soil Health</span>
-                    <span class='intel-pill-desc'>SOC • Microbes • Salinity</span>
-                </div>
-                <div class='intel-pillar-card'>
-                    <span class='intel-pill-icon'>💧</span>
-                    <span class='intel-pill-name'>Water</span>
-                    <span class='intel-pill-desc'>Percolation • Deficit • Runoff</span>
-                </div>
-                <div class='intel-pillar-card'>
-                    <span class='intel-pill-icon'>🦋</span>
-                    <span class='intel-pill-name'>Biodiversity</span>
-                    <span class='intel-pill-desc'>Pollinators • Flora • Fauna</span>
-                </div>
-                <div class='intel-pillar-card'>
-                    <span class='intel-pill-icon'>🌿</span>
-                    <span class='intel-pill-name'>Carbon</span>
-                    <span class='intel-pill-desc'>Biomass • Humus • CO2eq</span>
-                </div>
-                <div class='intel-pillar-card'>
-                    <span class='intel-pill-icon'>⚠️</span>
-                    <span class='intel-pill-name'>Risk</span>
-                    <span class='intel-pill-desc'>Erosion • Shock • Degradation</span>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    else:
-        # Active Consultation Header with reset/new button
-        col_hdr_title, col_hdr_btn = st.columns([3, 1])
-        with col_hdr_title:
-            st.markdown(f"<div style='font-size: 0.95rem; font-weight: 600; color: #6ee7b7; padding-top: 6px;'>🌿 Active Consultation: <span style='color: #f8fafc;'>{active_session['title']}</span></div>", unsafe_allow_html=True)
-        with col_hdr_btn:
-            if st.button("➕ New Consultation", key="btn_new_from_chat_hdr", use_container_width=True):
-                new_id = f"session_{len(st.session_state.consultations) + 1}_{int(time.time())}"
-                st.session_state.consultations[new_id] = {
-                    "title": "New Consultation",
-                    "chat_history": [],
-                    "agent": BiodiversityIntelligenceAgent(vector_store=vector_store)
-                }
-                st.session_state.active_session_id = new_id
+            if st.button("🌊 Agrochemical Runoff & Ecosystem Shock\n(Chemical Runoff, SOC 0.4%)", key="hero_st_4", use_container_width=True):
+                st.session_state.pending_prompt = "Soil organic carbon: 0.4%, Rainfall: low, Crop: monoculture cotton, High chemical pesticide and fertilizer runoff"
                 st.rerun()
 
     # Render Conversation Messages
