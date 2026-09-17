@@ -360,11 +360,10 @@ with st.sidebar:
         session_db.save_user_consultations(user_id, st.session_state.consultations, new_id)
         st.rerun()
 
-    # Section: CONSULTATION HISTORY with Private Indicator
+    # Section: CONSULTATION HISTORY
     st.markdown("""
-    <div style='display: flex; justify-content: space-between; align-items: center; margin-top: 1.3rem; margin-bottom: 0.45rem;'>
-        <span style='font-size: 0.7rem; font-weight: 700; color: #6ee7b7; letter-spacing: 0.8px;'>MY CONSULTATIONS</span>
-        <span style='font-size: 0.68rem; color: #10b981; font-weight: 500;'>🔒 Private to You</span>
+    <div style='margin-top: 1.3rem; margin-bottom: 0.45rem; font-size: 0.7rem; font-weight: 700; color: #6ee7b7; letter-spacing: 0.8px;'>
+        CONSULTATION HISTORY
     </div>
     """, unsafe_allow_html=True)
 
@@ -396,7 +395,7 @@ with st.sidebar:
             st.rerun()
 
     # Compact Collapsible Settings
-    with st.expander("⚙️ Settings & Privacy", expanded=False):
+    with st.expander("⚙️ Settings & API Key", expanded=False):
         api_key_input = st.text_input("Gemini API Key (Optional)", type="password", placeholder="AIzaSy...", value=agent.gemini_api_key or "")
         if api_key_input:
             if agent.gemini_api_key != api_key_input:
@@ -415,7 +414,7 @@ with st.sidebar:
                 session_db.save_user_consultations(user_id, st.session_state.consultations, st.session_state.active_session_id)
                 st.rerun()
         with col_clr:
-            if st.button("🗑️ Clear My History", key="btn_clear_all_history", use_container_width=True):
+            if st.button("🗑️ Clear History", key="btn_clear_all_history", use_container_width=True):
                 session_db.delete_user_consultations(user_id)
                 initial_id = "session_default"
                 st.session_state.consultations = {
