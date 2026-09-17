@@ -9,3 +9,4 @@ htmlcov/
 dist/
 build/
 sync_to_desktop.py
+data/sessions/*.json
