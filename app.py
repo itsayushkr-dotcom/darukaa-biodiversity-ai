@@ -19,6 +19,7 @@ from core.intelligence_agent import BiodiversityIntelligenceAgent
 from core.schemas import StructuredEnvironmentalInput, GeoCoordinates, IntelligenceResponse, ChatMessage
 from knowledge_base.vector_store import EnvironmentalVectorStore
 from core.geo_spatial import GeoSpatialResolver
+from core.session_store import UserSessionDB
 
 st.set_page_config(
     page_title="Darukaa.Earth | AI Biodiversity Intelligence",
@@ -286,140 +287,27 @@ geo_resolver = get_geo_resolver()
 
 
 # ----------------------------------------------------
-# Persistent Consultation Storage (Survives Refresh)
+# Multi-Session State Management with Strict User Isolation (SQLite)
 # ----------------------------------------------------
-SESSIONS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "sessions")
-os.makedirs(SESSIONS_DIR, exist_ok=True)
+session_db = UserSessionDB()
 
-def get_storage_path(client_id: str) -> str:
-    safe_cid = "".join(c for c in str(client_id) if c.isalnum() or c in "-_")
-    return os.path.join(SESSIONS_DIR, f"{safe_cid}.json")
+# Periodic cleanup of sessions older than 7 days to keep database lean
+session_db.cleanup_old_sessions(max_age_days=7)
 
-def save_consultations(client_id: str, consultations: dict, active_id: str):
-    """Persists all consultation sessions to disk so they survive page refreshes."""
-    try:
-        data = {
-            "active_session_id": active_id,
-            "updated_at": time.time(),
-            "consultations": {}
-        }
-        for s_id, s_data in consultations.items():
-            serial_chat = []
-            for msg in s_data.get("chat_history", []):
-                item = {
-                    "role": msg.get("role", "user"),
-                    "content": msg.get("content", "")
-                }
-                resp = msg.get("response_obj")
-                if resp is not None:
-                    if hasattr(resp, "model_dump"):
-                        item["response_dict"] = resp.model_dump()
-                    elif isinstance(resp, dict):
-                        item["response_dict"] = resp
-                serial_chat.append(item)
-
-            agent_obj = s_data.get("agent")
-            data["consultations"][s_id] = {
-                "title": s_data.get("title", "Consultation"),
-                "chat_history": serial_chat,
-                "accumulated_params": getattr(agent_obj, "accumulated_params", {}) if agent_obj else {},
-                "gemini_api_key": getattr(agent_obj, "gemini_api_key", None) if agent_obj else None
-            }
-
-        # Save to client-specific file
-        with open(get_storage_path(client_id), "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
-        # Also save to last_active.json as fallback for direct refresh
-        with open(os.path.join(SESSIONS_DIR, "last_active.json"), "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-    except Exception:
-        pass
-
-def load_consultations(client_id: str, vector_store_instance):
-    """Restores consultation sessions from persistent disk storage."""
-    path = get_storage_path(client_id)
-    data = None
-    if os.path.exists(path):
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception:
-            data = None
-
-    if not data or not data.get("consultations"):
-        fallback_path = os.path.join(SESSIONS_DIR, "last_active.json")
-        if os.path.exists(fallback_path):
-            try:
-                with open(fallback_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-            except Exception:
-                data = None
-
-    if not data or not data.get("consultations"):
-        return None, None
-
-    restored = {}
-    for s_id, s_data in data["consultations"].items():
-        restored_chat = []
-        for msg in s_data.get("chat_history", []):
-            item = {
-                "role": msg.get("role", "user"),
-                "content": msg.get("content", "")
-            }
-            if "response_dict" in msg and msg["response_dict"]:
-                try:
-                    item["response_obj"] = IntelligenceResponse(**msg["response_dict"])
-                except Exception:
-                    item["response_obj"] = None
-            restored_chat.append(item)
-
-        agent_inst = BiodiversityIntelligenceAgent(
-            gemini_api_key=s_data.get("gemini_api_key"),
-            vector_store=vector_store_instance
-        )
-        agent_inst.accumulated_params = s_data.get("accumulated_params", {})
-        for m in restored_chat:
-            agent_inst.conversation_memory.append(ChatMessage(role=m["role"], content=m["content"]))
-
-        restored[s_id] = {
-            "title": s_data.get("title", "Consultation"),
-            "chat_history": restored_chat,
-            "agent": agent_inst
-        }
-
-    active_id = data.get("active_session_id")
-    if not active_id or active_id not in restored:
-        active_id = list(restored.keys())[0]
-
-    return restored, active_id
-
-def clear_consultations(client_id: str):
-    """Removes stored sessions for this client."""
-    for p in [get_storage_path(client_id), os.path.join(SESSIONS_DIR, "last_active.json")]:
-        if os.path.exists(p):
-            try:
-                os.remove(p)
-            except Exception:
-                pass
-
-
-# ----------------------------------------------------
-# Multi-Session State Management with URL & Disk Sync
-# ----------------------------------------------------
-# Persistent Client Identifier in Query Params
-if "cid" not in st.query_params:
-    cid = f"u_{int(time.time())}_{uuid.uuid4().hex[:6]}"
-    st.query_params["cid"] = cid
-else:
-    cid = st.query_params["cid"]
+# Each browser visitor gets an isolated client ID stored in their own query param (?uid=...)
+user_id = st.query_params.get("uid") or st.query_params.get("cid")
+if not user_id:
+    user_id = f"u_{uuid.uuid4().hex[:10]}"
+    st.query_params["uid"] = user_id
 
 if "consultations" not in st.session_state:
-    restored, active_id = load_consultations(cid, vector_store)
+    # Strictly query only this user's data from SQLite - zero fallback to any other user
+    restored, active_id = session_db.load_user_consultations(user_id, vector_store)
     if restored:
         st.session_state.consultations = restored
         st.session_state.active_session_id = active_id
     else:
+        # Brand new, pristine consultation: completely clean and isolated
         initial_id = "session_default"
         st.session_state.consultations = {
             initial_id: {
@@ -429,7 +317,6 @@ if "consultations" not in st.session_state:
             }
         }
         st.session_state.active_session_id = initial_id
-        save_consultations(cid, st.session_state.consultations, initial_id)
 
 # Safety check for active session key
 if st.session_state.active_session_id not in st.session_state.consultations:
@@ -470,14 +357,14 @@ with st.sidebar:
             "agent": BiodiversityIntelligenceAgent(vector_store=vector_store)
         }
         st.session_state.active_session_id = new_id
-        save_consultations(cid, st.session_state.consultations, new_id)
+        session_db.save_user_consultations(user_id, st.session_state.consultations, new_id)
         st.rerun()
 
-    # Section: CONSULTATION HISTORY with Auto-Saved Indicator
+    # Section: CONSULTATION HISTORY with Private Indicator
     st.markdown("""
     <div style='display: flex; justify-content: space-between; align-items: center; margin-top: 1.3rem; margin-bottom: 0.45rem;'>
-        <span style='font-size: 0.7rem; font-weight: 700; color: #6ee7b7; letter-spacing: 0.8px;'>CONSULTATION HISTORY</span>
-        <span style='font-size: 0.68rem; color: #10b981; font-weight: 500;'>💾 Auto-Saved</span>
+        <span style='font-size: 0.7rem; font-weight: 700; color: #6ee7b7; letter-spacing: 0.8px;'>MY CONSULTATIONS</span>
+        <span style='font-size: 0.68rem; color: #10b981; font-weight: 500;'>🔒 Private to You</span>
     </div>
     """, unsafe_allow_html=True)
 
@@ -488,7 +375,7 @@ with st.sidebar:
         btn_type = "primary" if is_active else "secondary"
         if st.button(btn_label, key=f"session_btn_{s_id}", use_container_width=True, type=btn_type):
             st.session_state.active_session_id = s_id
-            save_consultations(cid, st.session_state.consultations, s_id)
+            session_db.save_user_consultations(user_id, st.session_state.consultations, s_id)
             st.rerun()
 
     st.markdown("<div style='margin: 1rem 0; border-top: 1px solid rgba(255,255,255,0.06);'></div>", unsafe_allow_html=True)
@@ -509,12 +396,12 @@ with st.sidebar:
             st.rerun()
 
     # Compact Collapsible Settings
-    with st.expander("⚙️ Settings & History Management", expanded=False):
+    with st.expander("⚙️ Settings & Privacy", expanded=False):
         api_key_input = st.text_input("Gemini API Key (Optional)", type="password", placeholder="AIzaSy...", value=agent.gemini_api_key or "")
         if api_key_input:
             if agent.gemini_api_key != api_key_input:
                 agent.gemini_api_key = api_key_input
-                save_consultations(cid, st.session_state.consultations, st.session_state.active_session_id)
+                session_db.save_user_consultations(user_id, st.session_state.consultations, st.session_state.active_session_id)
             st.success("API Key Linked & Saved")
         else:
             st.caption("Autonomous Scientific Engine Mode (Offline Capable RAG)")
@@ -525,11 +412,11 @@ with st.sidebar:
             if st.button("🔄 Reset Chat", key="btn_reset_active", use_container_width=True):
                 active_session["chat_history"] = []
                 active_session["agent"].reset_memory()
-                save_consultations(cid, st.session_state.consultations, st.session_state.active_session_id)
+                session_db.save_user_consultations(user_id, st.session_state.consultations, st.session_state.active_session_id)
                 st.rerun()
         with col_clr:
-            if st.button("🗑️ Clear All", key="btn_clear_all_history", use_container_width=True):
-                clear_consultations(cid)
+            if st.button("🗑️ Clear My History", key="btn_clear_all_history", use_container_width=True):
+                session_db.delete_user_consultations(user_id)
                 initial_id = "session_default"
                 st.session_state.consultations = {
                     initial_id: {
@@ -539,7 +426,6 @@ with st.sidebar:
                     }
                 }
                 st.session_state.active_session_id = initial_id
-                save_consultations(cid, st.session_state.consultations, initial_id)
                 st.rerun()
 
     st.caption(f"📚 {len(vector_store.documents)} peer-reviewed documents indexed (FAO, IPCC, IPBES, ICAR)")
@@ -740,7 +626,7 @@ with tab_chat:
             "content": response.overall_scientific_summary or "",
             "response_obj": response
         })
-        save_consultations(cid, st.session_state.consultations, st.session_state.active_session_id)
+        session_db.save_user_consultations(user_id, st.session_state.consultations, st.session_state.active_session_id)
 
         st.rerun()
 
