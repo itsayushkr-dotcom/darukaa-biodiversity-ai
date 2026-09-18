@@ -190,13 +190,13 @@ class MultiMetricReasoningEngine:
                     exact_quote_or_finding="Multi-species legume cover crops (Vicia, Trifolium, Crotalaria) generate low C:N ratio organic inputs that stimulate fungal necromass formation, increasing SOC by 0.2–0.5 t C/ha/yr."
                 ),
                 ScientificCitation(
-                    source="Nature (Lehmann & Kleber)",
-                    title="The contentious nature of soil organic matter",
-                    year=2015,
-                    document_id="NATURE_SOM_001",
-                    url="https://doi.org/10.1038/nature16069",
-                    section_or_page="Nature Vol. 528, pp. 60–68, Section: Soil Continuum & Microbial Protection",
-                    exact_quote_or_finding="Soil organic carbon persistence is governed by microbial necromass stabilization and organo-mineral micro-aggregates, where fungal hyphae provide physical protection against decomposition."
+                    source="Nature Ecology & Evolution",
+                    title="Soil biodiversity supports the delivery of multiple ecosystem functions",
+                    year=2023,
+                    document_id="NAT_ECOL_EVOL_001",
+                    url="https://www.nature.com/articles/s41559-022-01935-4",
+                    section_or_page="Nature Ecol Evol 7, 233–245 (2023), Section: Soil Biodiversity & Microbially Driven Carbon Pools",
+                    exact_quote_or_finding="Soil microbial biodiversity (fungal and bacterial networks) directly regulates carbon pool stabilization, organic matter decomposition rates, and multiple soil ecosystem multifunctionalities."
                 )
             ],
             time_horizon_summary="Surface moisture retention begins immediately; soil carbon and microbial surge within 18-24 months.",
