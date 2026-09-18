@@ -10,6 +10,46 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 
 
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.opc.constants import RELATIONSHIP_TYPE
+
+
+def add_hyperlink(paragraph, url: str, text: str, color_hex: str = "0066CC", underline: bool = True):
+    """
+    Inserts a genuine, clickable hyperlink into a python-docx paragraph using standard OpenXML.
+    Word, LibreOffice, and Google Docs render this as an active clickable link.
+    """
+    part = paragraph.part
+    r_id = part.relate_to(url, RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), r_id)
+
+    new_run = OxmlElement("w:r")
+    rPr = OxmlElement("w:rPr")
+
+    if color_hex:
+        c = OxmlElement("w:color")
+        c.set(qn("w:val"), color_hex)
+        rPr.append(c)
+
+    if underline:
+        u = OxmlElement("w:u")
+        u.set(qn("w:val"), "single")
+        rPr.append(u)
+
+    new_run.append(rPr)
+
+    text_elem = OxmlElement("w:t")
+    text_elem.text = text
+    new_run.append(text_elem)
+
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
+    return hyperlink
+
+
 def create_submission_document(output_path: str):
     doc = Document()
 
@@ -25,16 +65,25 @@ def create_submission_document(output_path: str):
     doc.add_paragraph()
 
     # Section 1: Core Submission Links
-    h1 = doc.add_heading("1. Submission Links & Access", level=1)
-    p = doc.add_paragraph()
-    p.add_run("• GitHub Repository: ").bold = True
-    p.add_run("https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai\n")
-    p.add_run("• Live Deployed Web Application: ").bold = True
-    p.add_run("https://darukaa-earth.streamlit.app/\n")
-    p.add_run("• Local Workbench URL: ").bold = True
-    p.add_run("http://localhost:8501 (via python -m streamlit run app.py)\n")
-    p.add_run("• REST API Documentation URL: ").bold = True
-    p.add_run("http://localhost:8000/docs (Interactive Swagger/OpenAPI)")
+    doc.add_heading("1. Submission Links & Access", level=1)
+
+    p1 = doc.add_paragraph(style="List Bullet")
+    p1.add_run("GitHub Repository: ").bold = True
+    add_hyperlink(p1, "https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai", "https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai")
+
+    p2 = doc.add_paragraph(style="List Bullet")
+    p2.add_run("Live Deployed Web Application: ").bold = True
+    add_hyperlink(p2, "https://darukaa-earth.streamlit.app/", "https://darukaa-earth.streamlit.app/")
+
+    p3 = doc.add_paragraph(style="List Bullet")
+    p3.add_run("Local Workbench URL: ").bold = True
+    add_hyperlink(p3, "http://localhost:8501", "http://localhost:8501")
+    p3.add_run(" (via python -m streamlit run app.py)")
+
+    p4 = doc.add_paragraph(style="List Bullet")
+    p4.add_run("REST API Documentation URL: ").bold = True
+    add_hyperlink(p4, "http://localhost:8000/docs", "http://localhost:8000/docs")
+    p4.add_run(" (Interactive Swagger/OpenAPI)")
 
     # Reviewer Access
     doc.add_heading("Repository Access for Private Repositories", level=2)
@@ -46,7 +95,9 @@ def create_submission_document(output_path: str):
         "guneet.mutreja@darukaa.com"
     ]
     for r in reviewers:
-        doc.add_paragraph(f"  ✔ {r}", style="List Bullet")
+        p_r = doc.add_paragraph(style="List Bullet")
+        p_r.add_run("✔ ")
+        add_hyperlink(p_r, f"mailto:{r}", r, color_hex="1F497D", underline=True)
 
     # Section 2: Executive Summary & Objective Alignment
     doc.add_heading("2. System Design & Scientific Depth Overview", level=1)

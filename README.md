@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 🚀 **Live Deployed Application:** [https://darukaa-earth.streamlit.app/](https://darukaa-earth.streamlit.app/)  
-> 📄 **Official Submission Dossier:** [`submission/Darukaa_Earth_Submission_Dossier.docx`](file:///submission/Darukaa_Earth_Submission_Dossier.docx)
+> 📄 **Official Submission Dossier:** [submission/Darukaa_Earth_Submission_Dossier.docx](submission/Darukaa_Earth_Submission_Dossier.docx) ([Download Raw .docx](https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai/raw/main/submission/Darukaa_Earth_Submission_Dossier.docx))
 
 ---
 
@@ -209,7 +209,7 @@ OK (100% Passed)
 
 ### 2. Generated Word Submission Document (.docx):
 A complete `.docx` file has been generated at:
-[`submission/Darukaa_Earth_Submission_Dossier.docx`](file:///submission/Darukaa_Earth_Submission_Dossier.docx)
+[submission/Darukaa_Earth_Submission_Dossier.docx](submission/Darukaa_Earth_Submission_Dossier.docx) | [Download Raw (.docx)](https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai/raw/main/submission/Darukaa_Earth_Submission_Dossier.docx)
 
 ### 3. Private Repository Access Granted To:
 - `ankita.dasgupta@darukaa.com`
