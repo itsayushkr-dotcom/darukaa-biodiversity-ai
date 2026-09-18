@@ -11,6 +11,10 @@
 > 🚀 **Live Deployed Application:** [https://darukaa-earth.streamlit.app/](https://darukaa-earth.streamlit.app/)  
 > 📄 **Official Submission Dossier:** [submission/Darukaa_Earth_Submission_Dossier.docx](submission/Darukaa_Earth_Submission_Dossier.docx) ([Download Raw .docx](https://github.com/itsayushkr-dotcom/darukaa-biodiversity-ai/raw/main/submission/Darukaa_Earth_Submission_Dossier.docx))
 
+<p align="center">
+  <img src="image.png" alt="Darukaa.Earth AI Environmental Scientist Interface" width="100%" />
+</p>
+
 ---
 
 ## 📑 Table of Contents
