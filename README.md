@@ -5,7 +5,7 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://darukaa-earth.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688.svg)](https://fastapi.tiangolo.com)
-[![Tests Passing](https://img.shields.io/badge/tests-9%20passed%2C%20100%25-brightgreen.svg)]()
+[![Tests Passing](https://img.shields.io/badge/tests-18%20passed%2C%20100%25-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 🚀 **Live Deployed Application:** [https://darukaa-earth.streamlit.app/](https://darukaa-earth.streamlit.app/)  
@@ -184,18 +184,27 @@ python evaluation/benchmark_cases.py
 
 ### Test Results:
 ```text
-test_bonus_geo_spatial_context_resolution ... ok
-test_constraint_multi_metric_coupling_at_least_3_variables ... ok
-test_criterion_1_and_2_primary_problem_statement_usecase ... ok
-test_criterion_3_knowledge_system_retrieval ... ok
-test_criterion_4_incomplete_input_clarifying_question ... ok
-test_criterion_4_multi_turn_conversation_memory ... ok
-test_output_quality_confidence_and_time_horizon ... ok
-test_pillar_5_human_impact_and_pollution_scenario ... ok
-test_structured_json_input_support ... ok
+test_constraint_no_generic_shallow_llm_recommendations ... ok
+test_constraint_offline_deterministic_execution_without_api_key ... ok
+test_criterion_1_depth_of_reasoning_coupling_at_least_3_variables ... ok
+test_criterion_1_depth_of_reasoning_multi_variable_causal_chain ... ok
+test_criterion_1_depth_of_reasoning_non_obvious_biological_mechanisms ... ok
+test_criterion_2_scientific_grounding_quantified_delta_estimates ... ok
+test_criterion_2_scientific_grounding_verified_citations ... ok
+test_criterion_3_knowledge_system_domain_filtering ... ok
+test_criterion_3_knowledge_system_rag_retrieval ... ok
+test_criterion_4_conversational_intelligence_incomplete_input_clarification ... ok
+test_criterion_4_conversational_intelligence_multi_turn_accumulation ... ok
+test_criterion_4_conversational_intelligence_parameter_override ... ok
+test_criterion_5_output_clarity_pydantic_schema_compliance ... ok
+test_edge_case_chemical_pollution_and_runoff_scenario ... ok
+test_edge_case_colloquial_and_unstructured_text_parsing ... ok
+test_edge_case_extreme_soil_and_climate_values ... ok
+test_edge_case_geo_spatial_bounding_box_and_fallback ... ok
+test_edge_case_strict_per_user_session_isolation ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.038s
+Ran 18 tests in 0.147s
 
 OK (100% Passed)
 ```

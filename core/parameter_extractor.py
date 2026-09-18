@@ -22,17 +22,23 @@ class ParameterExtractor:
 
         # 1. Soil Organic Carbon (SOC)
         soc_match = re.search(
-            r'(?:soil\s+(?:organic\s+)?carbon|soc|organic\s+carbon|carbon)\s*(?:is|was|=|:|at|around|\s)\s*([0-9]+(?:\.[0-9]+)?)\s*%',
+            r'(?:soil\s+(?:organic\s+)?carbon|soc|organic\s+carbon|carbon)(?:\s*(?:is|was|=|:|at|around|about|approx|approximately|\s))+\s*([0-9]+(?:\.[0-9]+)?)\s*%',
             text_lower
         )
+        if not soc_match:
+            # Match even if user omitted the % sign (e.g. "soil organic carbon is 0.3")
+            soc_match = re.search(
+                r'(?:soil\s+organic\s+carbon|soc|organic\s+carbon)(?:\s*(?:is|was|=|:|at|around|about|approx|approximately|\s))+\s*([0-9]+(?:\.[0-9]+)?)(?:\s|$|,)',
+                text_lower
+            )
         if soc_match:
             extracted["soil_organic_carbon_pct"] = float(soc_match.group(1))
-        elif "low soil carbon" in text_lower or "depleted carbon" in text_lower or "low organic carbon" in text_lower:
+        elif "low soil carbon" in text_lower or "depleted carbon" in text_lower or "low organic carbon" in text_lower or "carbon depleted" in text_lower:
             extracted["soil_organic_carbon_pct"] = 0.4  # typical depleted baseline
 
         # 2. Soil pH
         ph_match = re.search(
-            r'(?:soil\s*)?ph\s*(?:is|was|=|:|at|around|\s)\s*([0-9]+(?:\.[0-9]+)?)',
+            r'(?:soil\s*)?ph(?:\s*(?:is|was|=|:|at|around|about|approx|approximately|\s))+\s*([0-9]+(?:\.[0-9]+)?)',
             text_lower
         )
         if ph_match:
@@ -44,23 +50,30 @@ class ParameterExtractor:
 
         # 3. Rainfall / Climate
         rainfall_mm = re.search(
-            r'(?:annual\s+)?(?:rainfall|precipitation)\s*(?:is|was|=|:|at|around|\s)\s*([0-9]+)\s*(?:mm)?',
+            r'(?:annual\s+)?(?:rainfall|precipitation)(?:\s*(?:is|was|=|:|at|around|about|approx|approximately|\s))+\s*([0-9]+)\s*(?:mm)?',
             text_lower
         )
+        if not rainfall_mm:
+            rainfall_mm = re.search(
+                r'([0-9]+)\s*mm\s*(?:of\s*)?(?:rain|rainfall|precipitation|annual\s+rainfall)?',
+                text_lower
+            )
         if rainfall_mm:
             extracted["annual_rainfall_mm"] = float(rainfall_mm.group(1))
             extracted["rainfall_pattern"] = "low" if float(rainfall_mm.group(1)) < 600 else "adequate"
         else:
             rf_match = re.search(
-                r'(?:annual\s+)?rainfall\s*(?:is|was|=|:|at|around|\s)\s*(low|moderate|high|erratic|seasonal)',
+                r'(?:annual\s+)?rainfall(?:\s*(?:is|was|=|:|at|around|about|\s))+\s*(low|moderate|high|erratic|seasonal|heavy|scanty)',
                 text_lower
             )
             if rf_match:
                 extracted["rainfall_pattern"] = rf_match.group(1)
-            elif "low rainfall" in text_lower or "drought" in text_lower or "water scarce" in text_lower or "rainfall is low" in text_lower:
+            elif "low rainfall" in text_lower or "drought" in text_lower or "water scarce" in text_lower or "rainfall is low" in text_lower or "hardly any rain" in text_lower or "dryland" in text_lower:
                 extracted["rainfall_pattern"] = "low"
-            elif "erratic rainfall" in text_lower or "irregular rain" in text_lower:
+            elif "erratic rainfall" in text_lower or "irregular rain" in text_lower or "unpredictable rain" in text_lower:
                 extracted["rainfall_pattern"] = "erratic"
+            elif "heavy rainfall" in text_lower or "high rainfall" in text_lower:
+                extracted["rainfall_pattern"] = "high"
 
         # 4. Region / Biome / Climate zone
         region_match = re.search(r'region[:\s]+([a-zA-Z\-\s]+?)(?:,|$|\n|\.)', text_lower)
@@ -76,9 +89,9 @@ class ParameterExtractor:
             extracted["region"] = "temperate"
 
         # 5. Crop & Monoculture
-        crop_match = re.search(r'crop[:\s]+([a-zA-Z\-\s]+?)(?:,|$|\n|\.)', text_lower)
+        crop_match = re.search(r'crop(?:\s*(?:is|was|are|to|=|:|\s))+\s*([a-zA-Z\-\s]+?)(?:,|$|\n|\.|\bwith\b)', text_lower)
         if crop_match:
-            crop_val = crop_match.group(1).strip()
+            crop_val = re.sub(r'^(?:is|are|was|to|=|:)\s+', '', crop_match.group(1)).strip()
             extracted["crop"] = crop_val
             if "monoculture" in crop_val:
                 extracted["cropping_system"] = "monoculture"
