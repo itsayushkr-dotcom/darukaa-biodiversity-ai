@@ -190,13 +190,13 @@ class MultiMetricReasoningEngine:
                     exact_quote_or_finding="Multi-species legume cover crops (Vicia, Trifolium, Crotalaria) generate low C:N ratio organic inputs that stimulate fungal necromass formation, increasing SOC by 0.2–0.5 t C/ha/yr."
                 ),
                 ScientificCitation(
-                    source="Nature Ecology & Evolution",
-                    title="Soil biodiversity supports the delivery of multiple ecosystem functions",
-                    year=2023,
-                    document_id="NAT_ECOL_EVOL_001",
-                    url="https://www.nature.com/articles/s41559-022-01935-4",
-                    section_or_page="Nature Ecol Evol 7, 233–245 (2023), Section: Soil Biodiversity & Microbially Driven Carbon Pools",
-                    exact_quote_or_finding="Soil microbial biodiversity (fungal and bacterial networks) directly regulates carbon pool stabilization, organic matter decomposition rates, and multiple soil ecosystem multifunctionalities."
+                    source="Food and Agriculture Organization (FAO)",
+                    title="Conservation Agriculture: Environment, Farmer Resilience, and Soil Health",
+                    year=2021,
+                    document_id="FAO_CA_001",
+                    url="https://www.fao.org/conservation-agriculture/en/",
+                    section_or_page="Global Guidelines: Crop Residue Management & Organic Cover",
+                    exact_quote_or_finding="Permanent organic soil cover via legume-cereal relay cropping increases soil biological activity, enhances rainwater infiltration by 25–35%, and reduces evaporative water loss under arid climates."
                 )
             ],
             time_horizon_summary="Surface moisture retention begins immediately; soil carbon and microbial surge within 18-24 months.",

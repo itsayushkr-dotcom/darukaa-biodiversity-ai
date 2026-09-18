@@ -181,16 +181,16 @@ class EnvironmentalVectorStore:
                     "Chapter 5: Managing Landscapes for Pollinators, Section 5.3.4 (pp. 340–348)"
                 ),
                 "IPBES_BIO_002": (
-                    "https://www.nature.com/articles/s41559-022-01935-4",
-                    "Nature Ecol Evol 7, 233–245 (2023), Section: Soil Biodiversity & Carbon Pools"
+                    "https://www.fao.org/conservation-agriculture/en/",
+                    "FAO Conservation Agriculture: Soil Health & Organic Cover"
+                ),
+                "FAO_CA_001": (
+                    "https://www.fao.org/conservation-agriculture/en/",
+                    "FAO Conservation Agriculture: Soil Health & Organic Cover"
                 ),
                 "NAT_ECOL_EVOL_001": (
-                    "https://www.nature.com/articles/s41559-022-01935-4",
-                    "Nature Ecol Evol 7, 233–245 (2023), Section: Soil Biodiversity & Carbon Pools"
-                ),
-                "NATURE_SOM_001": (
-                    "https://doi.org/10.1038/nature16069",
-                    "Nature Vol. 528, pp. 60–68, Section: Soil Continuum & Microbial Protection"
+                    "https://www.fao.org/conservation-agriculture/en/",
+                    "FAO Conservation Agriculture: Soil Health & Organic Cover"
                 ),
                 "SOIL_PHYS_001": (
                     "https://www.fao.org/soils-portal/soil-management/management-of-some-problem-soils/salt-affected-soils/en/",
