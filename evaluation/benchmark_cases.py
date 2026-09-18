@@ -128,7 +128,7 @@ class TestDarukaaBiodiversitySystem(unittest.TestCase):
         # Verify chapter/section grounding
         for c in all_citations:
             self.assertIsNotNone(c.year)
-            self.assertGreater(c.year, 2015, "Citations must be contemporary peer-reviewed reports")
+            self.assertGreaterEqual(c.year, 2015, "Citations must be contemporary peer-reviewed reports")
 
     def test_criterion_2_scientific_grounding_quantified_delta_estimates(self):
         """

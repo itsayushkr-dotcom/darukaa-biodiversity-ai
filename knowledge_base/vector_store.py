@@ -181,8 +181,12 @@ class EnvironmentalVectorStore:
                     "Chapter 5: Managing Landscapes for Pollinators, Section 5.3.4 (pp. 340–348)"
                 ),
                 "IPBES_BIO_002": (
-                    "https://www.nature.com/articles/s41559-019-0885-4",
-                    "Nature Ecol Evol 10.1038/s41559-019-0885-4, Section: Fungal Necromass Dynamics"
+                    "https://doi.org/10.1038/nature16069",
+                    "Nature Vol. 528, pp. 60–68, Section: Soil Continuum & Microbial Protection"
+                ),
+                "NATURE_SOM_001": (
+                    "https://doi.org/10.1038/nature16069",
+                    "Nature Vol. 528, pp. 60–68, Section: Soil Continuum & Microbial Protection"
                 ),
                 "SOIL_PHYS_001": (
                     "https://www.fao.org/soils-portal/soil-management/management-of-some-problem-soils/salt-affected-soils/en/",
